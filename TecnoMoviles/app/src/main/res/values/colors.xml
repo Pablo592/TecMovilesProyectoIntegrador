@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blackFondo">#161616</color>
     <color name="textoCrearCuenta">#CFCFCF</color>
+    <color name="grey">#DADADA</color>
 </resources>
