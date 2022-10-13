@@ -3,7 +3,6 @@
     <string name="contrasenia">Contraseña</string>
     <string name="usuario">Usuario</string>
     <string name="ingresar">Ingresar</string>
-    <string name="crearCuenta">Crear cuenta</string>
     <string name="email">Email</string>
-    <string name="registrarme">Crear Cuenta</string>
+    <string name="registrarme">Registrarse</string>
 </resources>

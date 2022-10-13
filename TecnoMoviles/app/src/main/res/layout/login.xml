@@ -14,39 +14,40 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textoLoginUser"
+        android:id="@+id/userText"
         android:layout_width="20mm"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/imagenLogin"
         app:layout_constraintTop_toBottomOf="@id/imagenLogin"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:text="@string/usuario"
         android:textColor="@color/white">
     </TextView>
 
     <EditText
-        android:id="@+id/inputUser"
+        android:id="@+id/userInput"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/textoLoginUser"
-        app:layout_constraintTop_toBottomOf="@id/textoLoginUser"
+        app:layout_constraintStart_toStartOf="@+id/userText"
+        app:layout_constraintTop_toBottomOf="@id/userText"
         android:inputType="text"
         android:backgroundTint="@color/white"
         android:textColor="@color/white">
     </EditText>
 
     <TextView
-        android:id="@+id/textoLoginPassword"
+        android:id="@+id/passwordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/inputUser"
-        app:layout_constraintTop_toBottomOf="@id/inputUser"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/userInput"
+        app:layout_constraintTop_toBottomOf="@id/userInput"
         android:text="@string/contrasenia"
         android:textColor="@color/white">
     </TextView>
@@ -57,15 +58,15 @@
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/textoLoginPassword"
-        app:layout_constraintTop_toBottomOf="@id/textoLoginPassword"
+        app:layout_constraintStart_toStartOf="@+id/passwordText"
+        app:layout_constraintTop_toBottomOf="@id/passwordText"
         android:inputType="textPassword"
         android:backgroundTint="@color/white"
         android:textColor="@color/white">
     </EditText>
 
     <TextView
-        android:id="@+id/textoCrearCuenta"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
@@ -73,18 +74,18 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@id/inputPassword"
-        android:text="@string/crearCuenta"
+        android:text="@string/registrarme"
         android:textColor="@color/textoCrearCuenta">
     </TextView>
 
 
     <Button
-        android:id="@+id/textoIngresar"
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/textoCrearCuenta"
-        app:layout_constraintTop_toBottomOf="@+id/textoCrearCuenta"
+        app:layout_constraintStart_toStartOf="@+id/registerButton"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
         android:text="@string/ingresar"
         android:textAlignment="center"
         android:background="@android:color/transparent"

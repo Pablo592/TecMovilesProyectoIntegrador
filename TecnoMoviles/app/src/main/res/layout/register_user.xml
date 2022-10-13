@@ -44,6 +44,7 @@
         android:id="@+id/textoLoginUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/inputEmail"
         app:layout_constraintTop_toBottomOf="@id/inputEmail"
@@ -69,6 +70,7 @@
         android:id="@+id/textoLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginLeft="15dp"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/inputUser"
@@ -104,13 +106,13 @@
     </Button>
 
 <ImageView
+    android:id="@+id/returnButton"
     android:layout_width="40dp"
     android:layout_height="40dp"
     android:layout_marginTop="10dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    android:src="@drawable/pinpng_com_back_arrow_icon_png_4127963"
-    >
+    android:src="@drawable/pinpng_com_back_arrow_icon_png_4127963">
 </ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
