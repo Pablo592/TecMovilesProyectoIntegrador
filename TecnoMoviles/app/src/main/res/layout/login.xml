@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blackFondo">
+
+    <ImageView
+        android:id="@+id/imagenLogin"
+        android:layout_width="match_parent"
+        android:layout_height="308dp"
+        android:src="@drawable/tech_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textoLoginUser"
+        android:layout_width="20mm"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/imagenLogin"
+        app:layout_constraintTop_toBottomOf="@id/imagenLogin"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/usuario"
+        android:textColor="@color/white">
+    </TextView>
+
+    <EditText
+        android:id="@+id/inputUser"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textoLoginUser"
+        app:layout_constraintTop_toBottomOf="@id/textoLoginUser"
+        android:inputType="text"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white">
+    </EditText>
+
+    <TextView
+        android:id="@+id/textoLoginPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/inputUser"
+        app:layout_constraintTop_toBottomOf="@id/inputUser"
+        android:text="@string/contrasenia"
+        android:textColor="@color/white">
+    </TextView>
+
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textoLoginPassword"
+        app:layout_constraintTop_toBottomOf="@id/textoLoginPassword"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white">
+    </EditText>
+
+    <TextView
+        android:id="@+id/textoCrearCuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/inputPassword"
+        app:layout_constraintTop_toBottomOf="@id/inputPassword"
+        android:text="@string/crearCuenta"
+        android:textColor="@color/textoCrearCuenta">
+    </TextView>
+
+
+    <Button
+        android:id="@+id/textoIngresar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textoCrearCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/textoCrearCuenta"
+        android:text="@string/ingresar"
+        android:textAlignment="center"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="50dp">
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
