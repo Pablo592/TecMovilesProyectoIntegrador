@@ -10,7 +10,7 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 - Categorias ✅__
 - Pantalla de pago ✅__
 - Pantalla de productos agregados al carrito ✅__
-- Pantalla de configuración ✅__
+- Pantalla de configuración ✅
 
         ![TechKings](/resources/LogoTecnologiaMovil.jpg "Empresa TechKings")
 
@@ -24,4 +24,4 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 
 # Desarrolladores
 👨‍💻 [Pablo Gaido](https://github.com/Pablo592)__
-👨‍💻 [Kevin Yanes](https://github.com/kyanesdev)__
+👨‍💻 [Kevin Yanes](https://github.com/kyanesdev)
