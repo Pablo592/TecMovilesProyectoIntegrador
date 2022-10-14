@@ -13,7 +13,7 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 - Pantalla de configuración ✅
 
 <p align="center">
-     ![TechKings](/resources/LogoTecnologiaMovil.jpg "Empresa TechKings")
+     <img src="/resources/LogoTecnologiaMovil.jpg" />
 </p>
 
 # Temas desarrollados
