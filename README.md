@@ -12,7 +12,9 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 - Pantalla de productos agregados al carrito ✅  
 - Pantalla de configuración ✅
 
+<p align="center">
      ![TechKings](/resources/LogoTecnologiaMovil.jpg "Empresa TechKings")
+</p>
 
 # Temas desarrollados
 📝 Activities  
