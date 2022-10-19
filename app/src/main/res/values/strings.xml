@@ -5,4 +5,6 @@
     <string name="ingresar">Ingresar</string>
     <string name="email">Email</string>
     <string name="registrarme">Registrarse</string>
+
+    <string name="busquedasAnteriores">En base a tus busquedas anteriores TechKing te recomienda</string>
 </resources>
