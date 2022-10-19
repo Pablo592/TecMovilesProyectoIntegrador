@@ -22,11 +22,11 @@
         android:id="@+id/recyclerView"
         android:layout_width="411dp"
         android:layout_height="276dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="1dp"
         app:flow_horizontalBias="0.0"
         app:layout_constraintStart_toStartOf="@id/recomendaciones"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recomendaciones">
+        app:layout_constraintTop_toBottomOf="@id/fragment_header">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -34,6 +34,7 @@
         android:id="@+id/recomendaciones"
         android:layout_width="411dp"
         android:layout_height="69dp"
+        android:layout_marginTop="278dp"
         android:background="@drawable/gradient_component"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@id/fragment_header"
