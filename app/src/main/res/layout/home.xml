@@ -16,7 +16,8 @@
         android:name="utils.fragments.HeaderFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_header"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" >
+    </androidx.fragment.app.FragmentContainerView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -25,7 +26,7 @@
         android:layout_marginTop="1dp"
         app:flow_horizontalBias="0.0"
         app:layout_constraintStart_toStartOf="@id/recomendaciones"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/recomendaciones"
         app:layout_constraintTop_toBottomOf="@id/fragment_header">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -39,9 +40,7 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@id/fragment_header"
         app:layout_constraintTop_toBottomOf="@id/fragment_header"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="367dp">
+        tools:ignore="MissingConstraints">
 
 
         <TextView
@@ -51,8 +50,22 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:text="@string/busquedasAnteriores"
-            android:textStyle="bold"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSecond"
+        android:layout_width="409dp"
+        android:layout_height="319dp"
+        android:layout_marginTop="90dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recomendaciones"
+        tools:ignore="MissingConstraints">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
