@@ -19,6 +19,7 @@ class CustomAdapterSecond: RecyclerView.Adapter<CustomAdapterSecond.ViewHolder>(
     }
 
     override fun onBindViewHolder(viewHolder: CustomAdapterSecond.ViewHolder, i: Int) {
+        images[i]
         viewHolder.itemImage.setImageResource(images[i])
     }
 

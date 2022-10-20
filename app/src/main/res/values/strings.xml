@@ -7,4 +7,9 @@
     <string name="registrarme">Registrarse</string>
 
     <string name="busquedasAnteriores">En base a tus busquedas anteriores TechKing te recomienda</string>
+    <string name="namedata">Nombre:</string>
+    <string name="nombre">nombre</string>
+    <string name="usernameData">Usuario:</string>
+    <string name="emailData">Email:</string>
+    <string name="editar_mis_datos">Editar mis datos</string>
 </resources>
