@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.tecno.tecnomoviles.databinding.EditDataUserBinding
-import com.tecno.tecnomoviles.databinding.LoginBinding
 
 class EditDataUser : AppCompatActivity() {
 
@@ -56,6 +55,10 @@ class EditDataUser : AppCompatActivity() {
             }
         }
         binding.guardarCambios.setOnClickListener(){
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        binding.cancelarCambios.setOnClickListener(){
             startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
