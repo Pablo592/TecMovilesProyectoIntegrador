@@ -20,4 +20,8 @@
     <string name="ingrese_su_nueva_contrase_a">Ingrese su nueva contraseña</string>
     <string name="guardar_cambios">Guardar Cambios</string>
     <string name="cancelar_cambios">Cancelar cambios</string>
+    <string name="explicacion_compra">Enviaremos tu pedido a la ubicación seleccionada</string>
+    <string name="interrogacion_compra">¿Estas seguro de realizar el pedido?</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
