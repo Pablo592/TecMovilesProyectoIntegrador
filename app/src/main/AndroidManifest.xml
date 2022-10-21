@@ -12,55 +12,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TecnoMoviles"
         tools:targetApi="31">
-
+        <activity
+            android:name=".DetailedActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
-
-        </activity>
-
-
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <activity
             android:name=".ProfileActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <activity
             android:name=".EditDataUser"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
-        </activity>
-
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
-        </activity>
-
-        <activity
-            android:name=".ConfirmacionCompra"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
+        <activity
+            android:name=".ConfirmacionCompra"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
     </application>
 
 </manifest>
