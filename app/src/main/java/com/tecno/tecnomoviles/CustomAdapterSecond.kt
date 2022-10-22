@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapterSecond: RecyclerView.Adapter<CustomAdapterSecond.ViewHolder>() {
 
+    var onItemClick: ((Producto)-> Unit)? = null
+
+
     val images = intArrayOf(R.drawable.auricular,
         R.drawable.gabinete,
         R.drawable.placa_madre,
@@ -20,7 +23,12 @@ class CustomAdapterSecond: RecyclerView.Adapter<CustomAdapterSecond.ViewHolder>(
 
     override fun onBindViewHolder(viewHolder: CustomAdapterSecond.ViewHolder, i: Int) {
         images[i]
+        val producto = Producto(images[i])
         viewHolder.itemImage.setImageResource(images[i])
+
+        viewHolder.itemView.setOnClickListener() {
+            onItemClick?.invoke(producto)
+        }
     }
 
     override fun getItemCount(): Int {

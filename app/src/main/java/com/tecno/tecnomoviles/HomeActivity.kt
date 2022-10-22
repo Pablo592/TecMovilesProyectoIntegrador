@@ -1,5 +1,6 @@
 package com.tecno.tecnomoviles
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.HorizontalScrollView
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,12 @@ class HomeActivity: AppCompatActivity() {
 
             recyclerViewSecond.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
             recyclerViewSecond.adapter = adapterSecond
+            adapterSecond.onItemClick = {
+                val intent = Intent(this, DetailedActivity::class.java)
+                intent.putExtra("producto",it)
+                startActivity(intent)
+            }
+
         }
     }
 }
