@@ -1,62 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blackFondo">
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+    <androidx.fragment.app.FragmentContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="utils.fragments.HeaderFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_header"
+        tools:ignore="MissingConstraints" >
+    </androidx.fragment.app.FragmentContainerView>
 
-        <ImageView
-            android:id="@+id/drawer"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="1dp"
+        app:flow_horizontalBias="0.0"
+        app:layout_constraintStart_toStartOf="@id/recomendaciones"
+        app:layout_constraintEnd_toEndOf="@id/recomendaciones"
+        app:layout_constraintTop_toBottomOf="@id/fragment_header">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/recomendaciones"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gradient_component"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/busquedasAnteriores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintStart_toStartOf="@id/header"
-            app:layout_constraintTop_toTopOf="@id/header"
-            android:src="@drawable/drower">
-        </ImageView>
-
-        <EditText
-            android:id="@+id/searchInput"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:inputType="textAutoCorrect"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/drawer"
-            app:layout_constraintTop_toBottomOf="@id/drawer">
-        </EditText>
-
-        <ImageView
-            android:id="@+id/searchIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toEndOf="@+id/searchInput"
-            app:layout_constraintTop_toBottomOf="@+id/header"
-            android:src="@drawable/searchicon">
-        </ImageView>
-
-        <ImageView
-            android:id="@+id/chop"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="35dp"
-            app:layout_constraintStart_toEndOf="@+id/searchIcon"
-            app:layout_constraintTop_toBottomOf="@id/header"
-            android:src="@drawable/shopping_store">
-        </ImageView>
+            android:text="@string/busquedasAnteriores"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSecond"
+        android:layout_width="409dp"
+        android:layout_height="319dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recomendaciones"
+        tools:ignore="MissingConstraints">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,4 +5,27 @@
     <string name="ingresar">Ingresar</string>
     <string name="email">Email</string>
     <string name="registrarme">Registrarse</string>
+
+    <string name="busquedasAnteriores">En base a tus busquedas anteriores TechKing te recomienda</string>
+    <string name="namedata">Nombre:</string>
+    <string name="nombre">nombre</string>
+    <string name="usernameData">Usuario:</string>
+    <string name="emailData">Email:</string>
+    <string name="editar_mis_datos">Editar mis datos</string>
+    <string name="cambiar_usuario">Cambiar usuario</string>
+    <string name="cambiar_nombre">Cambiar Nombre</string>
+    <string name="cambiar_contrasenia">Cambiar contraseña</string>
+    <string name="cambiar_email">Cambiar Email</string>
+    <string name="ingrese_su_contrase_a_actual">Ingrese su contraseña actual</string>
+    <string name="ingrese_su_nueva_contrase_a">Ingrese su nueva contraseña</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="cancelar_cambios">Cancelar cambios</string>
+    <string name="explicacion_compra">Enviaremos tu pedido a la ubicación seleccionada</string>
+    <string name="interrogacion_compra">¿Estas seguro de realizar el pedido?</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="precio">Precio</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="comprar">Comprar</string>
+    <string name="a_adir_al_carro">Añadir al carro</string>
 </resources>

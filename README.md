@@ -1,16 +1,16 @@
 # Proyecto integrador de Tecnologias Moviles
 
 El proyecto consta de una aplicación de una E-commerce de tecnologia para la empresa TechKings desarrollada en Kotlin, la cual contiene:
-- Pantalla de carga (Splash) :octocat:    
-- Pantalla de login :octocat:    
-- Pantalla de registro :octocat:  
-- Pantalla de perfil de usuario :octocat:  
-- Un carrito de compras :octocat:  
-- Productos :octocat:  
-- Categorias :octocat:  
-- Pantalla de pago :octocat:  
-- Pantalla de productos agregados al carrito :octocat:  
-- Pantalla de configuración :octocat:  
+:octocat: Pantalla de carga (Splash) :octocat:    
+:octocat: Pantalla de login :octocat:    
+:octocat: Pantalla de registro :octocat:  
+:octocat: Pantalla de perfil de usuario :octocat:  
+:octocat: Un carrito de compras :octocat:  
+:octocat: Productos :octocat:  
+:octocat: Categorias :octocat:  
+:octocat: Pantalla de pago :octocat:  
+:octocat: Pantalla de productos agregados al carrito :octocat:  
+:octocat: Pantalla de configuración :octocat:  
 
 <p align="center">
      <img src="/resources/LogoTecnologiaMovil.jpg" />
@@ -23,6 +23,9 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 📝 Gestion de recursos  
 📝 Recycler View  
 📝 Fragment  
+
+# Diseño de la aplicación
+[Figma](https://www.figma.com/file/KyBU5VFZdcYjcfLlk11tFG/Proyecto-Integrador%3A-Tecnologias-M%C3%B3viles?node-id=0%3A1)
 
 # Desarrolladores
 👨‍💻 [Pablo Gaido](https://github.com/Pablo592)  

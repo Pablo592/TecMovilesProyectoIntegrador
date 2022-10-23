@@ -5,30 +5,27 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.tecno.tecnomoviles.databinding.LoginBinding
 
 class LoginActivity: AppCompatActivity() {
 
-    private lateinit var registerButton: TextView
-    private lateinit var loginButton: Button
-
+    private lateinit var binding : LoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
         supportActionBar?.hide()
 
-        registerButton = findViewById(R.id.registerButton)
-        loginButton = findViewById(R.id.loginButton)
+        binding = LoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val registerIntent = Intent(this, RegisterActivity::class.java)
-        val loginIntent = Intent(this, HomeActivity::class.java)
+        binding.registerButton.setOnClickListener{
 
-        registerButton.setOnClickListener(){
-            startActivity(registerIntent)
+        startActivity( Intent(this, RegisterActivity::class.java))
         }
 
-        loginButton.setOnClickListener(){
-            startActivity(loginIntent)
+        binding.loginButton.setOnClickListener{
+            startActivity(Intent(this, HomeActivity::class.java))
         }
 
     }

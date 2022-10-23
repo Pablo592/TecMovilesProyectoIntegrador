@@ -4,23 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.tecno.tecnomoviles.databinding.LoginBinding
+import com.tecno.tecnomoviles.databinding.RegisterUserBinding
 
 class RegisterActivity: AppCompatActivity() {
 
-    private lateinit var returnButton: ImageView
+    private lateinit var binding : RegisterUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_user)
         supportActionBar?.hide()
 
-        returnButton = findViewById(R.id.returnButton)
+        binding = RegisterUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val loginIntent = Intent(this, LoginActivity::class.java)
 
+        binding.returnButton.setOnClickListener{
 
-        returnButton.setOnClickListener(){
-            startActivity(loginIntent)
+            startActivity(Intent(this, LoginActivity::class.java))
         }
+
     }
 }
