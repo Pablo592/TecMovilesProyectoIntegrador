@@ -16,5 +16,7 @@ class DetailedActivity : AppCompatActivity() {
 
             imageView.setImageResource(producto.images)
         }
+
+
     }
 }
