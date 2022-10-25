@@ -21,8 +21,6 @@ class CarritoActivity : AppCompatActivity() {
             }
         }
 
-
-
         val recyclerViewProductoCarrito = findViewById<RecyclerView>(R.id.recyclerViewCarrito)
         val adapterProductoCarrito = CustomAdapterProductoCarrito()
 

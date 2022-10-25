@@ -2,7 +2,6 @@ package com.tecno.tecnomoviles
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
