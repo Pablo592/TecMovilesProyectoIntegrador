@@ -29,6 +29,10 @@ class NavigationDrawer : AppCompatActivity() {
         binding.imageHome.setOnClickListener(){
             startActivity(Intent(this, HomeActivity::class.java))
         }
+
+        binding.shoppingHistory.setOnClickListener() {
+            startActivity(Intent(this, HistorialCompra::class.java))
+        }
     }
 }
 
