@@ -10,7 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82dd77ee-1d3f-4c58-bf73-50771982fa5d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/ConfirmacionCompra.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/ConfirmacionCompra.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/EditDataUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/EditDataUser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/RegisterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tecno/tecnomoviles/RegisterActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/register_user.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
