@@ -2,7 +2,7 @@ package com.tecno.tecnomoviles
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -40,6 +40,9 @@ class HomeActivity: AppCompatActivity() {
                 intent.putExtra("producto",it)
                 startActivity(intent)
             }
+
+            val carrito = findViewById<ImageView>(R.id.chop)
+
 
         }
     }

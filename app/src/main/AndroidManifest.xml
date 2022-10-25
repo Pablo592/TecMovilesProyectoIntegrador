@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TecnoMoviles"
         tools:targetApi="31">
+
         <activity
             android:name=".DetailedActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -29,32 +29,37 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".ProfileActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".EditDataUser"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".NavigationDrawer"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".ConfirmacionCompra"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
+
+        <activity
+            android:name=".CarritoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
