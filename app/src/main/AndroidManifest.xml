@@ -29,7 +29,6 @@
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -63,7 +62,13 @@
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".CarritoActivity"
+<<<<<<< HEAD
             android:exported="true"></activity>
+=======
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
+        </activity>
+>>>>>>> 14634c9b1021f18ab16ce231902692ca176259f6
     </application>
 
 </manifest>
