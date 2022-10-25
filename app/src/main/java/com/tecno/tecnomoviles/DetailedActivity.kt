@@ -24,12 +24,8 @@ class DetailedActivity : AppCompatActivity() {
             imageView.setImageResource(producto.images)
         }
 
-<<<<<<< HEAD
-
-=======
         botonComprar.setOnClickListener(){
            startActivity(Intent(this, ConfirmacionCompra::class.java))
        }
->>>>>>> 1b7e0e809aa94551929d8073565de3cddbcce3a6
     }
 }

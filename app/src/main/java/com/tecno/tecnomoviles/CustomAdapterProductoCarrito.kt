@@ -27,7 +27,7 @@ class CustomAdapterProductoCarrito: RecyclerView.Adapter<CustomAdapterProductoCa
         R.drawable.tarjeta_video)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_layout,viewGroup,false)
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.producto_carrito,viewGroup,false)
         return ViewHolder(v)
     }
 

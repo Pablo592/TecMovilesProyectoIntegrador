@@ -12,6 +12,7 @@ class CarritoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrito)
+        supportActionBar?.hide()
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
@@ -22,10 +23,10 @@ class CarritoActivity : AppCompatActivity() {
 
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewCarrito)
-        val adapter = CustomAdapterProductoCarrito()
+        val recyclerViewProductoCarrito = findViewById<RecyclerView>(R.id.recyclerViewCarrito)
+        val adapterProductoCarrito = CustomAdapterProductoCarrito()
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        recyclerViewProductoCarrito.layoutManager = LinearLayoutManager(this)
+        recyclerViewProductoCarrito.adapter = adapterProductoCarrito
     }
 }
