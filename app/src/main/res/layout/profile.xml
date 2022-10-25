@@ -121,55 +121,17 @@
         android:textColor="@color/grey">
     </TextView>
 
-    <ImageView
-        android:id="@+id/startOne"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
+
+    <RatingBar
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/editDataButton"
         app:layout_constraintTop_toBottomOf="@id/editDataButton"
-        android:src="@drawable/star">
-    </ImageView>
+        android:numStars="5"
+        android:rating="2.5"
+        android:stepSize="0.5">
+    </RatingBar>
 
-    <ImageView
-        android:id="@+id/startTwo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toEndOf="@+id/startOne"
-        app:layout_constraintTop_toBottomOf="@id/editDataButton"
-        android:src="@drawable/star">
-    </ImageView>
-    <ImageView
-        android:id="@+id/startThree"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toEndOf="@+id/startTwo"
-        app:layout_constraintTop_toBottomOf="@id/editDataButton"
-        android:src="@drawable/star">
-    </ImageView>
-    <ImageView
-        android:id="@+id/startFour"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toEndOf="@+id/startThree"
-        app:layout_constraintTop_toBottomOf="@id/editDataButton"
-        android:src="@drawable/star">
-    </ImageView>
-    <ImageView
-        android:id="@+id/startFive"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toEndOf="@+id/startFour"
-        app:layout_constraintTop_toBottomOf="@id/editDataButton"
-        android:src="@drawable/star">
-    </ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

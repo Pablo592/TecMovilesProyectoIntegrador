@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.tecno.tecnomoviles.databinding.LoginBinding
 
@@ -24,7 +25,21 @@ class LoginActivity: AppCompatActivity() {
         startActivity( Intent(this, RegisterActivity::class.java))
         }
 
-        binding.loginButton.setOnClickListener{
+        binding.loginButton.setOnClickListener(){
+            when{
+                binding.userInput.text.isEmpty() -> {
+                    Toast.makeText(baseContext,"Ingrese su usuario",Toast.LENGTH_LONG).show()
+                return@setOnClickListener}
+
+                binding.inputPassword.text.isEmpty() -> {
+                    Toast.makeText(baseContext,"Ingrese su contraseña",Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+                binding.inputPassword.text.toString() != "123" -> {
+                    Toast.makeText(baseContext,"Usuario o contraseña incorrecto",Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+            }
             startActivity(Intent(this, HomeActivity::class.java))
         }
 

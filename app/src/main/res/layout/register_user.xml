@@ -93,7 +93,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/textoCrearCuentar"
+        android:id="@+id/textoCrearCuenta"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="20dp"
@@ -104,15 +104,4 @@
         android:background="@android:color/transparent"
         android:layout_marginTop="50dp">
     </Button>
-
-<ImageView
-    android:id="@+id/returnButton"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:layout_marginTop="10dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:src="@drawable/return_arrow">
-</ImageView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

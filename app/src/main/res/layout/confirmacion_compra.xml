@@ -57,7 +57,7 @@
     </TextView>
 
     <Button
-        android:id="@+id/guardarCambios"
+        android:id="@+id/aceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -73,7 +73,7 @@
     </Button>
 
     <Button
-        android:id="@+id/cancelarCambios"
+        android:id="@+id/cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
