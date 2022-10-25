@@ -1,6 +1,7 @@
 # Proyecto integrador de Tecnologias Moviles
 
-El proyecto consta de una aplicación de una E-commerce de tecnologia para la empresa TechKings desarrollada en Kotlin, la cual contiene:
+El proyecto consta de una aplicación de una E-commerce de tecnologia para la empresa TechKings desarrollada en Kotlin, la cual contiene:  
+
 :octocat: Pantalla de carga (Splash) :octocat:    
 :octocat: Pantalla de login :octocat:    
 :octocat: Pantalla de registro :octocat:  
