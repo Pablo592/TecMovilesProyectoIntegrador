@@ -1,6 +1,6 @@
-# Proyecto integrador de Tecnologias Moviles
+# Proyecto integrador de Tecnologías Móviles
 
-El proyecto consta de una aplicación de una E-commerce de tecnologia para la empresa TechKings desarrollada en Kotlin, la cual contiene:  
+El proyecto consta de una aplicación de una E-commerce de tecnologia para la empresa ficticia "TechKings", desarrollada en Kotlin, la cual contiene:  
 
 :octocat: Pantalla de carga (Splash) :octocat:    
 :octocat: Pantalla de login :octocat:    
@@ -20,13 +20,15 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 # Temas desarrollados
 📝 Activities  
 📝 View Binding  
-📝 Intents  
-📝 Gestion de recursos  
+📝 Intents
 📝 Recycler View  
 📝 Fragment  
 
 # Diseño de la aplicación
 [Figma](https://www.figma.com/file/KyBU5VFZdcYjcfLlk11tFG/Proyecto-Integrador%3A-Tecnologias-M%C3%B3viles?node-id=0%3A1)
+
+# Demo de la aplicación
+
 
 # Desarrolladores
 👨‍💻 [Pablo Gaido](https://github.com/Pablo592)  
