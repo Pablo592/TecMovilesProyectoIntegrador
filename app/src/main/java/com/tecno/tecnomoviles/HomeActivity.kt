@@ -25,7 +25,11 @@ class HomeActivity: AppCompatActivity() {
 
             val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
             val adapter = CustomAdapter()
-
+            adapter.onItemClick = {
+                val intent = Intent(this, DetailedActivity::class.java)
+                intent.putExtra("producto",it)
+                startActivity(intent)
+            }
 
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
@@ -41,9 +45,9 @@ class HomeActivity: AppCompatActivity() {
                 startActivity(intent)
             }
 
-            val carrito = findViewById<ImageView>(R.id.chop)
-
-
         }
+
     }
+
+
 }
