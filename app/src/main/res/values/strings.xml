@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TecnoMoviles</string>
+    <string name="app_name">TechKings</string>
     <string name="contrasenia">Contraseña</string>
     <string name="usuario">Usuario</string>
     <string name="ingresar">Ingresar</string>
@@ -28,4 +28,8 @@
     <string name="descripci_n">Descripción</string>
     <string name="comprar">Comprar</string>
     <string name="a_adir_al_carro">Añadir al carro</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="perfil">Perfil</string>
+    <string name="historial_de_compras">Historial de compras</string>
+    <string name="votar_aplicaci_n">Votar aplicación</string>
 </resources>

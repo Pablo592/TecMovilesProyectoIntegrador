@@ -11,5 +11,6 @@
     <color name="textoCrearCuenta">#CFCFCF</color>
     <color name="grey">#DADADA</color>
     <color name="red">#FF0000</color>
+    <color name="yellow">#FFF417</color>
     <color name="fondo_caracteristicas_producto">#1C1C1C</color>
 </resources>

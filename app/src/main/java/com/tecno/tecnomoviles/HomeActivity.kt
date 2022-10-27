@@ -2,7 +2,7 @@ package com.tecno.tecnomoviles
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -25,7 +25,11 @@ class HomeActivity: AppCompatActivity() {
 
             val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
             val adapter = CustomAdapter()
-
+            adapter.onItemClick = {
+                val intent = Intent(this, DetailedActivity::class.java)
+                intent.putExtra("producto",it)
+                startActivity(intent)
+            }
 
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = adapter
@@ -42,5 +46,8 @@ class HomeActivity: AppCompatActivity() {
             }
 
         }
+
     }
+
+
 }

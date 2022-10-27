@@ -3,6 +3,7 @@ package com.tecno.tecnomoviles
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.tecno.tecnomoviles.databinding.EditDataUserBinding
 
@@ -55,6 +56,34 @@ class EditDataUser : AppCompatActivity() {
             }
         }
         binding.guardarCambios.setOnClickListener(){
+
+            when{
+                binding.nameInput.text.isEmpty() && binding.nameInput.visibility == View.VISIBLE -> {
+                    Toast.makeText(baseContext,"Ingrese su nuevo nombre", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+                binding.usernameInput.text.isEmpty() && binding.usernameInput.visibility == View.VISIBLE -> {
+                    Toast.makeText(baseContext,"Ingrese su nuevo usuario", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+                binding.emailInput.text.isEmpty() && binding.emailInput.visibility == View.VISIBLE -> {
+                    Toast.makeText(baseContext,"Ingrese su email", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+                !binding.emailInput.text.contains("@") && binding.emailInput.visibility == View.VISIBLE -> {
+                    Toast.makeText(baseContext,"Ingrese un email válido", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+
+                binding.contraseniaActualInput.text.isEmpty() && binding.contraseniaActualInput.visibility == View.VISIBLE -> {
+                    Toast.makeText(baseContext,"Ingrese su contraseña actual", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+                binding.contraseniaNuevoInput.text.isEmpty() && binding.contraseniaNuevoInput.visibility == View.VISIBLE -> {
+                    Toast.makeText(baseContext,"Ingrese su nueva contraseña", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener}
+
+            }
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
