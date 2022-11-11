@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.MyApplication
 import com.tecno.tecnomoviles.databinding.LoginBinding
 
 class LoginActivity: AppCompatActivity() {
@@ -43,5 +44,20 @@ class LoginActivity: AppCompatActivity() {
             startActivity(Intent(this, HomeActivity::class.java))
         }
 
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
+            binding.userInput.setText(MyApplication.preferences.getUserName())
+            binding.inputPassword.setText("")
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MyApplication.preferences.setUserName(binding.userInput.text.toString())
+        binding.userInput.setText("")
     }
 }
