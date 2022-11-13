@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 
 class MySharedPreferences (context: Context) {
 
-    private val PREFS_NAME = "com.nicolasfanin.iuasampleappkotlin.sharedPreferences"
+    private val PREFS_NAME = "com.tecnoMoviles.techKings.sharedPreferences"
 
     val preferences : SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
