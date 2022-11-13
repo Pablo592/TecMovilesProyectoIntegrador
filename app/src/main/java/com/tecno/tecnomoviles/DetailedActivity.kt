@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.MyApplication
 import com.tecno.tecnomoviles.databinding.ConfirmacionCompraBinding
 import com.tecno.tecnomoviles.databinding.LoginBinding
 
@@ -27,5 +28,6 @@ class DetailedActivity : AppCompatActivity() {
         botonComprar.setOnClickListener(){
            startActivity(Intent(this, ConfirmacionCompra::class.java))
        }
+        MyApplication.preferences.setActivityName("DetailedActivity")
     }
 }

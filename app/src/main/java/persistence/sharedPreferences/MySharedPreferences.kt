@@ -11,10 +11,21 @@ class MySharedPreferences (context: Context) {
 
     private val KEY_USER_NAME = "USER_NAME"
     private val KEY_USER_AGE = "USER_AGE"
+    private val KEY_ACTIVITY_NAME = "KEY_ACTIVITY_NAME"
 
     fun setUserName(userName: String) {
         preferences.edit().putString(KEY_USER_NAME, userName).apply()
     }
+
+
+    fun setActivityName(activityName: String) {
+        preferences.edit().putString(KEY_ACTIVITY_NAME, activityName).apply()
+    }
+
+    fun getActivityName(): String {
+        return preferences.getString(KEY_ACTIVITY_NAME, "") ?: ""
+    }
+
 
     fun getUserName(): String {
         return preferences.getString(KEY_USER_NAME, "") ?: ""

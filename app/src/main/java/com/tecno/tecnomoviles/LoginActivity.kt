@@ -55,40 +55,23 @@ class LoginActivity: AppCompatActivity() {
                     if(binding.inputPassword.text.toString() == it.password) {
                         startActivity(Intent(this, HomeActivity::class.java))
                     }else{
-                        Toast.makeText(
-                            baseContext,
-                            "Ingrese datos correctos o Registrese",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Toast.makeText(baseContext,"Ingrese datos correctos o Registrese", Toast.LENGTH_LONG).show()
                     }
                 }
-
             })
-
-    //        startActivity(Intent(this, HomeActivity::class.java))
-
         }
-
     }
+
+
     private fun getProfileForDatabase() {
         runBlocking {
             launch {
-                if (MyApplication.preferences.getUserName()
-                        .isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()
-                ) {
-                    if (MyApplication.myAppDatabase.userDao()
-                            .isEmpty(binding.userInput.text.toString()) == 0
+                if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
+                    if (MyApplication.myAppDatabase.userDao().isEmpty(binding.userInput.text.toString()) == 0
                     ) {
-                        Toast.makeText(
-                            baseContext,
-                            "Ingrese datos correctos o Registrese",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Toast.makeText(baseContext, "Ingrese datos correctos o Registrese", Toast.LENGTH_LONG).show()
                     } else {
-                        if (MyApplication.preferences.getUserName()
-                                .isNotEmpty() || MyApplication.preferences.getUserName()
-                                .isNotBlank()
-                        ) {
+                        if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
                             userLiveData.value = MyApplication.myAppDatabase.userDao()
                                 .getUser(binding.userInput.text.toString())
                         }

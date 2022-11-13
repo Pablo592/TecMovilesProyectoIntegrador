@@ -1,6 +1,7 @@
 package com.tecno.tecnomoviles
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
@@ -38,16 +39,16 @@ class ProfileActivity : AppCompatActivity() {
             getProfileForDatabase()
 
             userLiveData.observe(this, Observer{
-
                 binding.userNameText.text = it.name
                 binding.userEmailText.text = it.email
                 binding.userUsernameText.text = it.username
-
+    //            binding.userImage.setImageURI(Uri.parse(it.profilePhotoUrl))
             })
             binding.editDataButton.setOnClickListener() {
                 startActivity(Intent(this, EditDataUser::class.java))
             }
         }
+        MyApplication.preferences.setActivityName("ProfileActivity")
     }
     private fun getProfileForDatabase() {
         runBlocking {

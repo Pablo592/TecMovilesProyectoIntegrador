@@ -6,6 +6,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.MyApplication
 import utils.fragments.HeaderFragment
 
 class CarritoActivity : AppCompatActivity() {
@@ -26,5 +27,7 @@ class CarritoActivity : AppCompatActivity() {
 
         recyclerViewProductoCarrito.layoutManager = LinearLayoutManager(this)
         recyclerViewProductoCarrito.adapter = adapterProductoCarrito
+
+        MyApplication.preferences.setActivityName("CarritoActivity")
     }
 }

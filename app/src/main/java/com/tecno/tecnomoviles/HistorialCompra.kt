@@ -7,6 +7,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.MyApplication
 import com.tecno.tecnomoviles.databinding.EditDataUserBinding
 import com.tecno.tecnomoviles.databinding.HistorialCompraBinding
 import utils.fragments.HeaderFragment
@@ -31,6 +32,7 @@ class HistorialCompra : AppCompatActivity() {
         recyclerViewHistorialCompra.layoutManager = LinearLayoutManager(this)
         recyclerViewHistorialCompra.adapter = adapterHistorialCompra
 
+        MyApplication.preferences.setActivityName("HistorialCompra")
     }
 
 

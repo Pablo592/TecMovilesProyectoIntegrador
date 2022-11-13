@@ -8,6 +8,9 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.MyApplication
+import com.tecno.tecnomoviles.databinding.HomeBinding
+import com.tecno.tecnomoviles.databinding.ProfileBinding
 import utils.fragments.HeaderFragment
 
 class HomeActivity: AppCompatActivity() {
@@ -46,7 +49,7 @@ class HomeActivity: AppCompatActivity() {
             }
 
         }
-
+        MyApplication.preferences.setActivityName("HomeActivity")
     }
 
 
