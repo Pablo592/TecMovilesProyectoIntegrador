@@ -17,6 +17,9 @@ interface UserDAO {
     @Update
     suspend fun updateUser (user: User)
 
+    @Query("SELECT Count(*) FROM user WHERE username = :username")
+    suspend fun isEmpty(username: String): Int
+
     @Query("SELECT * FROM user WHERE username = :username")
     suspend fun getUser(username: String): User
 }

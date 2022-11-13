@@ -9,7 +9,7 @@ import persistence.entitys.product.ProductDAO
 import persistence.entitys.user.User
 import persistence.entitys.user.UserDAO
 
-@Database(entities = [Product::class, User::class], version = 1)
+@Database(entities = [Product::class, User::class], version = 2)
 abstract class MyAppRoomDatabase: RoomDatabase() {
 
     abstract fun productDao(): ProductDAO
@@ -18,7 +18,7 @@ abstract class MyAppRoomDatabase: RoomDatabase() {
     companion object{
         val roomDatabase:MyAppRoomDatabase = Room.
         databaseBuilder(MyApplication.myApplicationContext, MyAppRoomDatabase::class.java,
-            "com.tecnoMoviles.techKings.database")
+            "com.tecnoMoviles.techKings.database").fallbackToDestructiveMigration()
             .build()
     }
 

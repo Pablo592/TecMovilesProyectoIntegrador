@@ -20,7 +20,7 @@ interface ProductDAO {
     suspend fun getAllProduct(): List<Product>
 
     @Query("SELECT * FROM product where id = :id")
-    suspend fun getOne(id: Int): Product
+    suspend fun getProductById(id: Int): Product
 
     @Query("SELECT * FROM product where type = :type")
     suspend fun getType(type: String): Product
