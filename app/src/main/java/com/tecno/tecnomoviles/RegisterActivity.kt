@@ -15,7 +15,6 @@ import persistence.entitys.user.User
 class RegisterActivity: AppCompatActivity() {
 
     private lateinit var binding : RegisterUserBinding
-    val userLiveData = MutableLiveData<User>()
     var existente: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +57,7 @@ class RegisterActivity: AppCompatActivity() {
         }
 
         binding.textoCancelar.setOnClickListener(){
-            startActivity(Intent(this, LoginActivity::class.java))º
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
     }
