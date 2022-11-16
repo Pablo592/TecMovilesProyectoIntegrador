@@ -132,7 +132,7 @@
         android:hint="@string/ingrese_su_contrase_a_actual"
         app:layout_constraintStart_toStartOf="@+id/changePassword"
         app:layout_constraintTop_toBottomOf="@id/changePassword"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:backgroundTint="@color/white"
         android:textColor="@color/white">
     </EditText>
@@ -148,7 +148,7 @@
         android:hint="@string/ingrese_su_nueva_contrase_a"
         app:layout_constraintStart_toStartOf="@+id/contraseniaActualInput"
         app:layout_constraintTop_toBottomOf="@id/contraseniaActualInput"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:backgroundTint="@color/white"
         android:textColor="@color/white">
     </EditText>
