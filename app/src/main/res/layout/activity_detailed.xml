@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="utils.fragments.HeaderFragment"
+        android:name="com.tecno.tecnomoviles.fragments.HeaderFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_header"
         tools:ignore="MissingConstraints" >

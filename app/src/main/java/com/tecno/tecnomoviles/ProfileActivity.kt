@@ -14,7 +14,7 @@ import com.tecno.tecnomoviles.databinding.ProfileBinding
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import persistence.entitys.user.User
-import utils.fragments.HeaderFragment
+import com.tecno.tecnomoviles.fragments.HeaderFragment
 
 class ProfileActivity : AppCompatActivity() {
 

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.EditDataUserBinding
 import com.tecno.tecnomoviles.databinding.HistorialCompraBinding
-import utils.fragments.HeaderFragment
+import com.tecno.tecnomoviles.fragments.HeaderFragment
 
 class HistorialCompra : AppCompatActivity() {
 

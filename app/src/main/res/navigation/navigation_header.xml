@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/headerFragment"
-        android:name="utils.fragments.HeaderFragment"
+        android:name="com.tecno.tecnomoviles.fragments.HeaderFragment"
         android:label="HeaderFragment"
         tools:layout="@layout/header_fragment"/>
 </navigation>

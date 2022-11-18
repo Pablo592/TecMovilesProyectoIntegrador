@@ -7,7 +7,7 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
-import utils.fragments.HeaderFragment
+import com.tecno.tecnomoviles.fragments.HeaderFragment
 
 class CarritoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

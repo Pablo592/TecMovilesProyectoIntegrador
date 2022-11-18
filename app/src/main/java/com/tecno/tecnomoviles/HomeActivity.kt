@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.HomeBinding
 import com.tecno.tecnomoviles.databinding.ProfileBinding
-import utils.fragments.HeaderFragment
+import com.tecno.tecnomoviles.fragments.HeaderFragment
 
 class HomeActivity: AppCompatActivity() {
 

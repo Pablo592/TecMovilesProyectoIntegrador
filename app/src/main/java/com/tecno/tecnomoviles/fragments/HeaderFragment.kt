@@ -1,4 +1,4 @@
-package utils.fragments
+package com.tecno.tecnomoviles.fragments
 
 import android.content.Intent
 import android.opengl.Visibility
