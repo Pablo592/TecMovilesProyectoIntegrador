@@ -15,7 +15,7 @@ import kotlin.concurrent.timerTask
 class SplashActivity : AppCompatActivity() {
 
     lateinit var productService: ProductRetrofit
-    lateinit var serviceResult: Call<ProductDTO>
+    lateinit var serviceResult: Call<List<ProductDTO>>
     lateinit var data: ProductDTO
     lateinit var resultTextView: TextView
 
@@ -36,10 +36,10 @@ class SplashActivity : AppCompatActivity() {
 
     private fun getProductListFromServerOption2() {
         serviceResult = productService.productRetrofitService.getProductList()
-        serviceResult.enqueue(object : Callback<ProductDTO> {
+        serviceResult.enqueue(object : Callback<List<ProductDTO>> {
             override fun onResponse(
-                call: Call<ProductDTO>,
-                response: Response<ProductDTO>
+                call: Call<List<ProductDTO>>,
+                response: Response<List<ProductDTO>>
             ) {
                 resultTextView.text = response.body().toString()
                 response.body()?.let {
@@ -49,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
                 //hideLoader
             }
 
-            override fun onFailure(call: Call<ProductDTO>, t: Throwable) {
+            override fun onFailure(call: Call<List<ProductDTO>>, t: Throwable) {
                 resultTextView.text = t.message
 
             }

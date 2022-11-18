@@ -7,5 +7,5 @@ import services.dataClasses.ProductDTO
 interface ProductService {
 
     @GET("")
-    fun getProductList() : Call<ProductDTO>
+    fun getProductList() : Call<List<ProductDTO>>
 }
