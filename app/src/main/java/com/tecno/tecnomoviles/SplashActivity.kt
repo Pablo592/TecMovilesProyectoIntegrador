@@ -2,10 +2,11 @@ package com.tecno.tecnomoviles
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.tecno.tecnomoviles.databinding.LoginBinding
+import com.MyApplication
 import com.tecno.tecnomoviles.databinding.SplashBinding
+import kotlinx.coroutines.runBlocking
+import persistence.entitys.product.Product
 import services.ProductRetrofit
 import services.dataClasses.ProductDTO
 import java.util.*
@@ -18,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
     lateinit var productService: ProductRetrofit
     lateinit var serviceResult: Call<List<ProductDTO>>
+    lateinit var listaProductos: List<ProductDTO>
     lateinit var data: ProductDTO
     private lateinit var binding : SplashBinding
 
@@ -48,17 +50,37 @@ class SplashActivity : AppCompatActivity() {
             ) {
                 binding.userText.text = response.body().toString()
                 response.body()?.let {
-             //       data = it.listaProductos
+                    listaProductos = it
                 }
-            //    resultTextView.text = data[1].toString()
-                //hideLoader
+                for (j in listaProductos) {
+                    saveProducts(j)
+                }
             }
-
             override fun onFailure(call: Call<List<ProductDTO>>, t: Throwable) {
                 binding.userText.text = t.message
 
             }
         })
     }
+
+
+    private fun saveProducts(product: ProductDTO){
+        runBlocking {
+            MyApplication.myAppDatabase.productDao().setProduct(
+                Product(
+                    name = product.name,
+                    type = product.type,
+                    urlPhoto = product.urlPhoto,
+                    price = product.price,
+                    description = product.description,
+                    features = product.features,
+                    trolley = product.trolley,
+                    recommended = product.recommended,
+                    bought = product.bought
+                )
+            )
+        }
+    }
+
 }
 
