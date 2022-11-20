@@ -17,4 +17,17 @@
         android:layout_marginTop="5dp">
     </ImageView>
 
+    <TextView
+        android:id="@+id/userText"
+        android:layout_width="20mm"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/usuario"
+        android:textColor="@color/white">
+    </TextView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

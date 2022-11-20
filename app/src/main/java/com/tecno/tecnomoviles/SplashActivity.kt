@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.tecno.tecnomoviles.databinding.LoginBinding
+import com.tecno.tecnomoviles.databinding.SplashBinding
 import services.ProductRetrofit
 import services.dataClasses.ProductDTO
 import java.util.*
@@ -17,12 +19,15 @@ class SplashActivity : AppCompatActivity() {
     lateinit var productService: ProductRetrofit
     lateinit var serviceResult: Call<List<ProductDTO>>
     lateinit var data: ProductDTO
-    lateinit var resultTextView: TextView
+    private lateinit var binding : SplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
         supportActionBar?.hide()
+
+        binding = SplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val mainIntent = Intent(this, LoginActivity::class.java)
 
@@ -30,8 +35,8 @@ class SplashActivity : AppCompatActivity() {
             startActivity(mainIntent)
         }, 1500)
 
- //       productService = ProductRetrofit()
- //       getProductListFromServerOption2()
+        productService = ProductRetrofit()
+        getProductListFromServerOption2()
     }
 
     private fun getProductListFromServerOption2() {
@@ -41,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
                 call: Call<List<ProductDTO>>,
                 response: Response<List<ProductDTO>>
             ) {
-                resultTextView.text = response.body().toString()
+                binding.userText.text = response.body().toString()
                 response.body()?.let {
              //       data = it.listaProductos
                 }
@@ -50,7 +55,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<ProductDTO>>, t: Throwable) {
-                resultTextView.text = t.message
+                binding.userText.text = t.message
 
             }
         })
