@@ -1,5 +1,6 @@
 package com.tecno.tecnomoviles
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -22,6 +23,7 @@ class EditDataUser : AppCompatActivity() {
     val userLiveData = MutableLiveData<User>()
     var existente: Boolean = true
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_data_user)
