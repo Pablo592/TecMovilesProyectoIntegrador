@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp">
 
-        <ImageView
+            <ImageView
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:id="@+id/item_image_second"

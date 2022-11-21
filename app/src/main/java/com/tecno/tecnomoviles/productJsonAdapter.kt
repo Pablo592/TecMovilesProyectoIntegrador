@@ -6,38 +6,36 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import persistence.entitys.product.Product
+import kotlinx.coroutines.NonDisposableHandle.parent
+import services.dataClasses.ProductDTO
 
-class productJsonAdapter(private val data: List<Product>, private val listener: ProductListOnClickListener) : RecyclerView.Adapter<ProductListViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_image_layout, parent, false)
-        return ProductListViewHolder(view, listener)
+class productJsonAdapter(val productDTO: MutableList<ProductDTO>): RecyclerView.Adapter<productJsonViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): productJsonViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_image_layout , parent , false)
+        return productJsonViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
-        val product = data[position]
-        Glide
-            .with(holder.itemView)
-            .load(product.urlPhoto)
-            .centerCrop()
-            .into(holder.productImage)
+    override fun onBindViewHolder(holder: productJsonViewHolder, position: Int) {
+        val product = productDTO[position]
+         Glide.with(holder.itemView).load(product.thumbnailUrl).into(holder.imageProduct);
+
+        //return holder.cardImage.setImageResource(productDTO[position])
 
     }
 
-    override fun getItemCount(): Int = data.size
-}
-
-class ProductListViewHolder(itemView: View, listener: ProductListOnClickListener): RecyclerView.ViewHolder(itemView) {
-    var productImage: ImageView = itemView.findViewById(R.id.cardImageView)
-
-    init {
-        itemView.setOnClickListener {
-            listener.onItemClick(adapterPosition)
-        }
+    override fun getItemCount(): Int {
+        return productDTO.size
     }
+
 }
 
-interface ProductListOnClickListener {
-    fun onItemClick(position: Int)
+class productJsonViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
+    val imageProduct : ImageView = itemView.findViewById(R.id.item_image_second)
+
+
 }
+
+

@@ -2,33 +2,28 @@ package com.tecno.tecnomoviles
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
 import com.tecno.tecnomoviles.fragments.HeaderFragment
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import persistence.entitys.product.Product
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import services.ProductService
+import services.ServiceGenerator
+import services.dataClasses.ProductDTO
 
 
-class HomeActivity: AppCompatActivity(), ProductListOnClickListener {
-
-    private val productList = createProducts()
-    private val productLiveData = MutableLiveData<Product>()
-    lateinit var listaProductos: List<Product>
+class HomeActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         supportActionBar?.hide()
-
-
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
@@ -40,7 +35,7 @@ class HomeActivity: AppCompatActivity(), ProductListOnClickListener {
             val adapter = CustomAdapter()
             adapter.onItemClick = {
                 val intent = Intent(this, DetailedActivity::class.java)
-                intent.putExtra("producto",it)
+                intent.putExtra("producto", it)
                 startActivity(intent)
             }
 
@@ -61,41 +56,38 @@ class HomeActivity: AppCompatActivity(), ProductListOnClickListener {
             */
 
 
-            getProfileForDatabase()
-            productLiveData.observe(this, Observer{
-                listaProductos = listOf(it) }
-            )
+            val serviceGenerator = ServiceGenerator.buildService(ProductService::class.java)
+            val call = serviceGenerator.getProductList()
+
+            val recyclerViewDbSecond = findViewById<RecyclerView>(R.id.recyclerViewSecond)
+
+            call.enqueue(object : Callback<MutableList<ProductDTO>> {
+
+                override fun onResponse(
+                    call: Call<MutableList<ProductDTO>>,
+                    response: Response<MutableList<ProductDTO>>
+                ) {
+
+                    if(response.isSuccessful){
+                        recyclerViewDbSecond.apply {
+                            layoutManager = LinearLayoutManager(this@HomeActivity,LinearLayoutManager.HORIZONTAL,false)
+                            recyclerViewDbSecond.adapter = productJsonAdapter(response.body()!!)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<MutableList<ProductDTO>>, t: Throwable) {
+                    //TODO("Implementation")
+                    t.printStackTrace()
+                    Log.e("error", t.message.toString())
+                }
+
+            })
 
 
 
-            val recyclerViewSecond = findViewById<RecyclerView>(R.id.recyclerViewSecond)
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = productJsonAdapter(data = listaProductos, listener = this)
 
         }
         MyApplication.preferences.setActivityName("HomeActivity")
     }
-
-    private fun createProducts() = mutableListOf<Product>(
-        Product(urlPhoto = "https://i.pinimg.com/564x/e9/d4/31/e9d431b1d18417583fe8388b85984c65.jpg" , bought = false , recommended = false ,
-            features = "si" , description = "si" , price = 300.00 , type = "si" , trolley = false , name = "si" , id = 1)
-    )
-
-    private fun getProfileForDatabase() {
-        runBlocking {
-            launch {
-                productLiveData.value = MyApplication.myAppDatabase.productDao().getType("Auriculares")
-            }
-        }
-    }
-
-    override fun onItemClick(position: Int) {
-
-        val myIntent = Intent(this, DetailedActivity::class.java)
-        startActivity(myIntent)
-
-    }
-
-
-
 }
