@@ -5,29 +5,68 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.MyApplication
+import com.bumptech.glide.Glide
+import com.tecno.tecnomoviles.databinding.ActivityDetailedBinding
 import com.tecno.tecnomoviles.databinding.ConfirmacionCompraBinding
 import com.tecno.tecnomoviles.databinding.LoginBinding
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import persistence.entitys.product.Product
+import kotlin.properties.Delegates
 
 class DetailedActivity : AppCompatActivity() {
 
-    private lateinit var botonComprar : Button
+    private lateinit var binding : ActivityDetailedBinding
+    val productLiveData = MutableLiveData<Product>()
+    lateinit var producto: Product
+    var id by Delegates.notNull<Int>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
 
-        botonComprar = findViewById(R.id.guardarCambios)
-        val producto = intent.getParcelableExtra<Producto>("producto")
-        if (producto!=null){
-            val imageView: ImageView = findViewById(R.id.detailedActivityImage)
+        binding = ActivityDetailedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        id = intent?.extras?.get("product") as Int
 
-            imageView.setImageResource(producto.images)
+
+        getProduct()
+
+
+        binding.guardarCambios.setOnClickListener(){
+            startActivity(Intent(this, ConfirmacionCompra::class.java))
         }
-
-        botonComprar.setOnClickListener(){
-           startActivity(Intent(this, ConfirmacionCompra::class.java))
-       }
+        binding.cancelarCambios.setOnClickListener(){
+            startActivity(Intent(this, ConfirmacionCompra::class.java))
+        }
         MyApplication.preferences.setActivityName("DetailedActivity")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.descripcion.text = producto.name
+        binding.precio.text = "$" + producto.price.toString()
+        binding.caracteristicas.text = producto.features
+
+        Glide.with(this).load(producto.urlPhoto).into(binding.detailedActivityImage)
+    }
+
+    public fun getProduct(){
+        getProductsForDatabase()
+        productLiveData.observe(this, Observer{
+            producto =  it
+        })
+    }
+
+    private fun getProductsForDatabase() {
+        runBlocking {
+            launch {
+                productLiveData.value = MyApplication.myAppDatabase.productDao().getProductById(id)
+            }
+        }
     }
 }
