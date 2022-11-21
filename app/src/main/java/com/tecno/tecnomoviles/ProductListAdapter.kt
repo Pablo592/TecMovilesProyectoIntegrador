@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import persistence.entitys.product.Product
 
 class ProductListAdapter(private val data: List<Product>, private val listener: ProductListOnClickListener) : RecyclerView.Adapter<ProductListViewHolder>() {
@@ -17,14 +18,11 @@ class ProductListAdapter(private val data: List<Product>, private val listener: 
 
     override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
         val product = data[position]
-        holder.productTitle.text = product.title
-        holder.productDescription.text = product.description
-
+        holder.productTitle.text = product.name
         Glide
             .with(holder.itemView)
-            .load(product.imageURL)
+            .load(product.urlPhoto)
             .centerCrop()
-            .placeholder(R.drawable.circle)
             .into(holder.productImage)
 
     }
@@ -34,7 +32,7 @@ class ProductListAdapter(private val data: List<Product>, private val listener: 
 
 class ProductListViewHolder(itemView: View, listener: ProductListOnClickListener): RecyclerView.ViewHolder(itemView) {
     var productTitle: TextView = itemView.findViewById(R.id.item_title)
-    var productImage: ImageView = itemView.findViewById(R.id.productImage)
+    var productImage: ImageView = itemView.findViewById(R.id.item_image)
 
     init {
         itemView.setOnClickListener {

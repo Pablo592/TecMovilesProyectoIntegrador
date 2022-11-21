@@ -21,10 +21,10 @@ import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
 import persistence.entitys.user.User
 
-class HomeActivity: AppCompatActivity() {
+class HomeActivity: AppCompatActivity() , ProductListOnClickListener {
 
     val productLiveData = MutableLiveData<List<Product>>()
-    lateinit var listaProductos: MutableList<List<Product>!>
+    lateinit var listaProductos: List<Product>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,16 +38,7 @@ class HomeActivity: AppCompatActivity() {
                 add<HeaderFragment>(R.id.fragment_header)
             }
 
-            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-            val adapter = CustomAdapter()
-            adapter.onItemClick = {
-                val intent = Intent(this, DetailedActivity::class.java)
-                intent.putExtra("producto",it)
-                startActivity(intent)
-            }
-
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = adapter
+            getListProducts()
 
             val recyclerViewSecond = findViewById<RecyclerView>(R.id.recyclerViewSecond)
             val adapterSecond = CustomAdapterSecond()
@@ -64,20 +55,36 @@ class HomeActivity: AppCompatActivity() {
         MyApplication.preferences.setActivityName("HomeActivity")
     }
 
+    override fun onResume() {
+        super.onResume()
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = ProductListAdapter(data = listaProductos, listener = this)
+    }
+
     private fun getProductsForDatabase() {
         runBlocking {
             launch {
-                    productLiveData.value = MyApplication.myAppDatabase.productDao().getAllProduct()
+                    productLiveData.value = MyApplication.myAppDatabase.productDao().getOneType()
             }
         }
     }
 
-    public fun getListProducts(): MutableList<List<Product>> {
+    public fun getListProducts(){
         getProductsForDatabase()
         productLiveData.observe(this, Observer{
-            listaProductos =   mutableListOf(it)
+            listaProductos =  it
         })
-        return listaProductos
+    }
+
+    override fun onItemClick(position: Int) {
+
+        Toast.makeText(baseContext, "Su Producto seleccionado es: ${listaProductos[position].name}", Toast.LENGTH_SHORT).show()
+/*
+        val myIntent = Intent(this, MyIntentActivity::class.java)
+        myIntent.putExtra("product",productList[position])
+        startActivity(myIntent)
+*/
     }
 
 
