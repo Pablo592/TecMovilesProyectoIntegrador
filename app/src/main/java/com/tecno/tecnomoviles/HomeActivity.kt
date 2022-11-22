@@ -2,6 +2,7 @@ package com.tecno.tecnomoviles
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.HomeBinding
+import com.tecno.tecnomoviles.databinding.LoginBinding
 import com.tecno.tecnomoviles.databinding.ProfileBinding
 import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
@@ -21,16 +23,35 @@ import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
 import persistence.entitys.user.User
 
-class HomeActivity: AppCompatActivity() , ProductListOnClickListener {
+class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductListTypeOnClickListener,ProductListOnClickRecomendedListener {
 
     val productLiveData = MutableLiveData<List<Product>>()
+    val productLiveTypeData = MutableLiveData<List<Product>>()
     lateinit var listaProductos: List<Product>
+    private lateinit var binding : HomeBinding
+    lateinit var listaTypeProductos: List<Product>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         supportActionBar?.hide()
+
+        binding = HomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.recyclerViewType.visibility = View.INVISIBLE
+        binding.botonReturn.visibility = View.INVISIBLE
+
+
+
+        binding.botonReturn.setOnClickListener(){
+            binding.recyclerViewType.visibility = View.INVISIBLE
+            binding.botonReturn.visibility = View.INVISIBLE
+            binding.recyclerView.visibility = View.VISIBLE
+        }
+
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
@@ -60,6 +81,12 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = ProductListAdapter(data = listaProductos, listener = this)
+
+
+
+        val recyclerViewRecomended = findViewById<RecyclerView>(R.id.recyclerViewSecond)
+        recyclerViewRecomended.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
+        recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaProductos, listener = this)
     }
 
     private fun getProductsForDatabase() {
@@ -70,6 +97,21 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener {
         }
     }
 
+    private fun getProductsForDatabaseType(type:String) {
+        runBlocking {
+            launch {
+                productLiveTypeData.value = MyApplication.myAppDatabase.productDao().getType(type)
+            }
+        }
+    }
+
+    public fun getListTypeProducts(type:String){
+        getProductsForDatabaseType(type)
+        productLiveTypeData.observe(this, Observer{
+            listaTypeProductos =  it
+        })
+    }
+
     public fun getListProducts(){
         getProductsForDatabase()
         productLiveData.observe(this, Observer{
@@ -78,14 +120,27 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener {
     }
 
     override fun onItemClick(position: Int) {
+        getListTypeProducts(listaProductos[position].type)
+        val recyclerViewType = findViewById<RecyclerView>(R.id.recyclerViewType)
+        recyclerViewType.layoutManager = LinearLayoutManager(this)
+        recyclerViewType.adapter = ProductListTypeAdapter(data = listaTypeProductos, listener = this)
+        binding.recyclerView.visibility = View.INVISIBLE
+        binding.recyclerViewType.visibility = View.VISIBLE
+        binding.botonReturn.visibility = View.VISIBLE
+    }
 
+    override fun onItemTypeClick(position: Int) {
+        Toast.makeText(baseContext, "Su Producto seleccionado es: ${listaTypeProductos[position].name}", Toast.LENGTH_SHORT).show()
+        val myIntent = Intent(this, DetailedActivity::class.java)
+        myIntent.putExtra("product",listaTypeProductos[position].id)
+        startActivity(myIntent)
+    }
+
+    override fun onItemRecomendedClick(position: Int) {
         Toast.makeText(baseContext, "Su Producto seleccionado es: ${listaProductos[position].name}", Toast.LENGTH_SHORT).show()
-
-
         val myIntent = Intent(this, DetailedActivity::class.java)
         myIntent.putExtra("product",listaProductos[position].id)
         startActivity(myIntent)
-
     }
 
 }
