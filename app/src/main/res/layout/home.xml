@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="utils.fragments.HeaderFragment"
+        android:name="com.tecno.tecnomoviles.fragments.HeaderFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_header"
         tools:ignore="MissingConstraints" >
@@ -29,6 +29,28 @@
         app:layout_constraintTop_toBottomOf="@id/fragment_header">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewType"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="1dp"
+        app:flow_horizontalBias="0.0"
+        app:layout_constraintStart_toStartOf="@id/recomendaciones"
+        app:layout_constraintEnd_toEndOf="@id/recomendaciones"
+        app:layout_constraintTop_toBottomOf="@id/fragment_header">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/botonReturn"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@id/recyclerViewType"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewType"
+        android:src="@drawable/return_arrow"></ImageView>
 
     <LinearLayout
         android:id="@+id/recomendaciones"
@@ -55,8 +77,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSecond"
-        android:layout_width="409dp"
-        android:layout_height="319dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"

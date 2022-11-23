@@ -6,7 +6,8 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import utils.fragments.HeaderFragment
+import com.MyApplication
+import com.tecno.tecnomoviles.fragments.HeaderFragment
 
 class CarritoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,5 +27,7 @@ class CarritoActivity : AppCompatActivity() {
 
         recyclerViewProductoCarrito.layoutManager = LinearLayoutManager(this)
         recyclerViewProductoCarrito.adapter = adapterProductoCarrito
+
+        MyApplication.preferences.setActivityName("CarritoActivity")
     }
 }

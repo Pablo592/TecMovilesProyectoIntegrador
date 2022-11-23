@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="utils.fragments.HeaderFragment"
+        android:name="com.tecno.tecnomoviles.fragments.HeaderFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation_header"
         tools:ignore="MissingConstraints" >
@@ -27,6 +27,17 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/fragment_header"
         app:layout_constraintTop_toBottomOf="@id/fragment_header"/>
+
+    <ImageView
+        android:id="@+id/editImage"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:src="@drawable/pencil_512"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="300dp"
+        app:layout_constraintStart_toStartOf="@id/fragment_header"
+        app:layout_constraintBottom_toBottomOf="@+id/userImage"/>
+
 
     <TextView
         android:id="@+id/userName"
@@ -71,7 +82,7 @@
 
     <TextView
         android:id="@+id/userUsernameText"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
@@ -97,7 +108,7 @@
 
     <TextView
         android:id="@+id/userEmailText"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textAlignment="textStart"

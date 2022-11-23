@@ -20,6 +20,17 @@ class ConfirmacionCompra  : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.aceptar.setOnClickListener(){
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("pgaido524@alumnos.iua.edu.ar"))
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Este es un mail de prueba")
+            intent.putExtra(Intent.EXTRA_TEXT, "Mensaje texto")
+            val mailer = Intent.createChooser(intent, "Enviar mail usando")
+            startActivity(mailer)
+
+
+
             startActivity( Intent(this, HomeActivity::class.java))
         }
 
