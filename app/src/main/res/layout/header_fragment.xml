@@ -16,6 +16,18 @@
         android:src="@drawable/drower">
     </ImageView>
 
+    <ImageView
+        android:id="@+id/botonReturn"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/arrow">
+    </ImageView>
+
     <EditText
         android:id="@+id/searchInput"
         android:layout_width="240dp"

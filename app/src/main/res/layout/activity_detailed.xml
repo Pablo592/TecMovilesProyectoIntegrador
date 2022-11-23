@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
     <Button
-        android:id="@+id/guardarCambios"
+        android:id="@+id/comprar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -85,7 +85,7 @@
     </Button>
 
     <Button
-        android:id="@+id/cancelarCambios"
+        android:id="@+id/aniadirAlCarro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

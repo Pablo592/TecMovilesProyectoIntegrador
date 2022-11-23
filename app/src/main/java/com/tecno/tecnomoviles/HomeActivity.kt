@@ -58,21 +58,9 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
                 setReorderingAllowed(true)
                 add<HeaderFragment>(R.id.fragment_header)
             }
-
-            getListProducts()
-
-            val recyclerViewSecond = findViewById<RecyclerView>(R.id.recyclerViewSecond)
-            val adapterSecond = CustomAdapterSecond()
-
-            recyclerViewSecond.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            recyclerViewSecond.adapter = adapterSecond
-            adapterSecond.onItemClick = {
-                val intent = Intent(this, DetailedActivity::class.java)
-                intent.putExtra("producto",it)
-                startActivity(intent)
-            }
-
         }
+
+        getListProducts()
         MyApplication.preferences.setActivityName("HomeActivity")
     }
 
@@ -92,7 +80,7 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
     private fun getProductsForDatabase() {
         runBlocking {
             launch {
-                    productLiveData.value = MyApplication.myAppDatabase.productDao().getOneType()
+                productLiveData.value = MyApplication.myAppDatabase.productDao().getOneType()
             }
         }
     }

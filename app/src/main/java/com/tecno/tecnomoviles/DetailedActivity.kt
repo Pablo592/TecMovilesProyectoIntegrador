@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.MyApplication
@@ -12,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.tecno.tecnomoviles.databinding.ActivityDetailedBinding
 import com.tecno.tecnomoviles.databinding.ConfirmacionCompraBinding
 import com.tecno.tecnomoviles.databinding.LoginBinding
+import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
@@ -29,6 +32,13 @@ class DetailedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<HeaderFragment>(R.id.fragment_header)
+            }
+        }
+
         binding = ActivityDetailedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         id = intent?.extras?.get("product") as Int
@@ -37,10 +47,10 @@ class DetailedActivity : AppCompatActivity() {
         getProduct()
 
 
-        binding.guardarCambios.setOnClickListener(){
+        binding.comprar.setOnClickListener(){
             startActivity(Intent(this, ConfirmacionCompra::class.java))
         }
-        binding.cancelarCambios.setOnClickListener(){
+        binding.aniadirAlCarro.setOnClickListener(){
             startActivity(Intent(this, ConfirmacionCompra::class.java))
         }
         MyApplication.preferences.setActivityName("DetailedActivity")

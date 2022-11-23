@@ -48,23 +48,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-    /*    for (j in listaProductos) {
-            getProfileForDatabase(j)
-
-            if(existente){
-                productLiveData.observe(this, Observer{
-                    if((j.type != it.type) || (j.urlPhoto != it.urlPhoto)||
-                        (j.price != it.price)|| (j.description != it.description)||
-                        (j.features != it.features)|| (j.trolley != it.trolley)||
-                        (j.recommended != it.recommended)|| (j.bought != it.bought)){
-
-                        updateProducts(j)
-                    }
-                })
-            }else{
-                saveProducts(j)
-            }
-        }*/
     }
 
     private fun getProductListFromServerOption2() {
@@ -74,7 +57,6 @@ class SplashActivity : AppCompatActivity() {
                 call: Call<List<ProductDTO>>,
                 response: Response<List<ProductDTO>>
             ) {
-                binding.userText.text = response.body().toString()
                 response.body()?.let { datos ->
 
                     for (j in datos) {
@@ -89,7 +71,6 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<List<ProductDTO>>, t: Throwable) {
-                binding.userText.text = t.message
 
             }
         })
@@ -98,11 +79,11 @@ class SplashActivity : AppCompatActivity() {
     private fun getProfileForDatabase(product: ProductDTO) {
         runBlocking {
             launch {
-                    if (MyApplication.myAppDatabase.productDao().isEmpty(product.name) > 0) {
-                        existente = true
-                    }else{
-                        existente = false
-                    }
+                if (MyApplication.myAppDatabase.productDao().isEmpty(product.name) > 0) {
+                    existente = true
+                }else{
+                    existente = false
+                }
             }
         }
     }
