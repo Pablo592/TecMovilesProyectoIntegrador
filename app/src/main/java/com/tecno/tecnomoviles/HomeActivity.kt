@@ -27,9 +27,11 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
 
     val productLiveData = MutableLiveData<List<Product>>()
     val productLiveTypeData = MutableLiveData<List<Product>>()
+    val productLiveRecomendedData = MutableLiveData<List<Product>>()
     lateinit var listaProductos: List<Product>
     private lateinit var binding : HomeBinding
     lateinit var listaTypeProductos: List<Product>
+    lateinit var listaRecomendedProductos: List<Product>
 
 
 
@@ -61,6 +63,7 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         }
 
         getListProducts()
+        getListRecomendedProducts()
         MyApplication.preferences.setActivityName("HomeActivity")
     }
 
@@ -71,10 +74,10 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         recyclerView.adapter = ProductListAdapter(data = listaProductos, listener = this)
 
 
-
+/*
         val recyclerViewRecomended = findViewById<RecyclerView>(R.id.recyclerViewSecond)
         recyclerViewRecomended.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
-        recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaProductos, listener = this)
+        recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaRecomendedProductos, listener = this)*/
     }
 
     private fun getProductsForDatabase() {
@@ -93,6 +96,28 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         }
     }
 
+    private fun getProductsForDatabaseRecomended() {
+        runBlocking {
+            launch {
+                if(MyApplication.myAppDatabase.productDao().getRecommendedIsEmpty(true) > 0){
+                    productLiveRecomendedData.value = MyApplication.myAppDatabase.productDao().getRecommended(true)
+                }else{
+                    productLiveRecomendedData.value = MyApplication.myAppDatabase.productDao().getOneType()
+                }
+            }
+        }
+    }
+
+    public fun getListRecomendedProducts(){
+        getProductsForDatabaseRecomended()
+        productLiveRecomendedData.observe(this, Observer{
+            listaRecomendedProductos =  it
+            val recyclerViewRecomended = findViewById<RecyclerView>(R.id.recyclerViewSecond)
+            recyclerViewRecomended.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
+            recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaRecomendedProductos, listener = this)
+        })
+    }
+
     public fun getListTypeProducts(type:String){
         getProductsForDatabaseType(type)
         productLiveTypeData.observe(this, Observer{
@@ -105,6 +130,7 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         productLiveData.observe(this, Observer{
             listaProductos =  it
         })
+
     }
 
     override fun onItemClick(position: Int) {

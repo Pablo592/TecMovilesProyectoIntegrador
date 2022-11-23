@@ -3,8 +3,6 @@ package com.tecno.tecnomoviles
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.MutableLiveData
@@ -12,8 +10,6 @@ import androidx.lifecycle.Observer
 import com.MyApplication
 import com.bumptech.glide.Glide
 import com.tecno.tecnomoviles.databinding.ActivityDetailedBinding
-import com.tecno.tecnomoviles.databinding.ConfirmacionCompraBinding
-import com.tecno.tecnomoviles.databinding.LoginBinding
 import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -48,9 +44,13 @@ class DetailedActivity : AppCompatActivity() {
 
 
         binding.comprar.setOnClickListener(){
+            producto.bought = true
+            updateProducts(producto)
             startActivity(Intent(this, ConfirmacionCompra::class.java))
         }
         binding.aniadirAlCarro.setOnClickListener(){
+            producto.trolley = true
+            updateProducts(producto)
             startActivity(Intent(this, ConfirmacionCompra::class.java))
         }
         MyApplication.preferences.setActivityName("DetailedActivity")
@@ -58,10 +58,10 @@ class DetailedActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        updateProducts(producto)
         binding.descripcion.text = producto.name
         binding.precio.text = "$" + producto.price.toString()
         binding.caracteristicas.text = producto.features
-
         Glide.with(this).load(producto.urlPhoto).into(binding.detailedActivityImage)
     }
 
@@ -69,6 +69,7 @@ class DetailedActivity : AppCompatActivity() {
         getProductsForDatabase()
         productLiveData.observe(this, Observer{
             producto =  it
+            producto.recommended = true
         })
     }
 
@@ -77,6 +78,24 @@ class DetailedActivity : AppCompatActivity() {
             launch {
                 productLiveData.value = MyApplication.myAppDatabase.productDao().getProductById(id)
             }
+        }
+    }
+    private fun updateProducts(product: Product){
+        runBlocking {
+            MyApplication.myAppDatabase.productDao().updateProduct(
+                Product(
+                    id = product.id,
+                    name = product.name,
+                    type = product.type,
+                    urlPhoto = product.urlPhoto,
+                    price = product.price,
+                    description = product.description,
+                    features = product.features,
+                    trolley = product.trolley,
+                    recommended = product.recommended,
+                    bought = product.bought
+                )
+            )
         }
     }
 }

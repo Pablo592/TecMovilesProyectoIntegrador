@@ -13,7 +13,7 @@ data class Product (
     val price: Double,
     val description: String,
     val features: String,
-    val trolley: Boolean,
-    val recommended: Boolean,
-    val bought: Boolean
+    var trolley: Boolean,
+    var recommended: Boolean,
+    var bought: Boolean
     )

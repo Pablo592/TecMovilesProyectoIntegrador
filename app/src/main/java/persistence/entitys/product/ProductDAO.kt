@@ -40,6 +40,9 @@ interface ProductDAO {
     @Query("SELECT * FROM product where recommended = :recommended")
     suspend fun getRecommended(recommended: Boolean): List<Product>
 
+    @Query("SELECT Count(*) FROM product where recommended = :recommended")
+    suspend fun getRecommendedIsEmpty(recommended: Boolean): Int
+
     @Query("SELECT * FROM product where bought = :bought order By price asc")
     suspend fun getBought(bought: Boolean): List<Product>
 }
