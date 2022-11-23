@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.MyApplication
 import com.tecno.tecnomoviles.CarritoActivity
+import com.tecno.tecnomoviles.HistorialCompra
 import com.tecno.tecnomoviles.HomeActivity
 import com.tecno.tecnomoviles.NavigationDrawer
 import com.tecno.tecnomoviles.databinding.HeaderFragmentBinding
@@ -29,6 +30,7 @@ class HeaderFragment : Fragment(){
         binding!!.drawer.setOnClickListener(){
             startActivity(Intent(this.requireContext(), NavigationDrawer::class.java))
         }
+
         binding!!.chop.setOnClickListener(){
             startActivity(Intent(this.requireContext(), CarritoActivity::class.java))
         }
@@ -54,7 +56,6 @@ class HeaderFragment : Fragment(){
             if(layout == "CarritoActivity"){
                 binding!!.chop.visibility = View.INVISIBLE
             }
-
         }
 
         return r

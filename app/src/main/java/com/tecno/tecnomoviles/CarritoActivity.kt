@@ -18,6 +18,7 @@ import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
+import java.util.*
 
 class CarritoActivity : AppCompatActivity() , ProductListOnClickCarritoListener{
 
@@ -46,6 +47,7 @@ class CarritoActivity : AppCompatActivity() , ProductListOnClickCarritoListener{
         binding.comprar.setOnClickListener(){
 
             for (j in listaProductos) {
+                j.dateBought =  Date().toString().split("GMT")[0]
                 updateProducts(j)
             }
 
@@ -103,9 +105,10 @@ class CarritoActivity : AppCompatActivity() , ProductListOnClickCarritoListener{
                     price = product.price,
                     description = product.description,
                     features = product.features,
-                    trolley = product.trolley,
+                    trolley = false,
                     recommended = product.recommended,
-                    bought = true
+                    bought = true,
+                    dateBought = product.dateBought
                 )
             )
         }

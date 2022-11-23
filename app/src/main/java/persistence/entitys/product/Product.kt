@@ -2,6 +2,7 @@ package persistence.entitys.product
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "product")
 data class Product (
@@ -15,5 +16,6 @@ data class Product (
     val features: String,
     var trolley: Boolean,
     var recommended: Boolean,
-    var bought: Boolean
+    var bought: Boolean,
+    var dateBought:String? = null
     )

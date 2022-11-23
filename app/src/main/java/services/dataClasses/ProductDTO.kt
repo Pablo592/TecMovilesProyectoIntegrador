@@ -12,5 +12,6 @@ data class ProductDTO (
     val features: String,
     val trolley: Boolean,
     val recommended: Boolean,
-    val bought: Boolean
+    val bought: Boolean,
+    var dateBought:String? = null
 )

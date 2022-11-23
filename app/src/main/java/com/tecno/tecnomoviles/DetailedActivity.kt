@@ -14,6 +14,7 @@ import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
+import java.util.*
 import kotlin.properties.Delegates
 
 class DetailedActivity : AppCompatActivity() {
@@ -45,6 +46,7 @@ class DetailedActivity : AppCompatActivity() {
 
         binding.comprar.setOnClickListener(){
             producto.bought = true
+            producto.dateBought = Date().toString().split("GMT")[0]
             updateProducts(producto)
             startActivity(Intent(this, ConfirmacionCompra::class.java))
         }
@@ -93,7 +95,8 @@ class DetailedActivity : AppCompatActivity() {
                     features = product.features,
                     trolley = product.trolley,
                     recommended = product.recommended,
-                    bought = product.bought
+                    bought = product.bought,
+                    dateBought = product.dateBought
                 )
             )
         }
