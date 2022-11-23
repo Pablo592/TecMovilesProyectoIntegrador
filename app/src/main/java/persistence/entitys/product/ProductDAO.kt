@@ -25,8 +25,11 @@ interface ProductDAO {
     @Query("SELECT * FROM product where id = :id")
     suspend fun getProductById(id: Int): Product
 
-    @Query("SELECT * FROM product where id = :name")
+    @Query("SELECT * FROM product where name = :name")
     suspend fun getProductByName(name: String): Product
+
+    @Query("SELECT id FROM product where name = :name")
+    suspend fun getProductIdByName(name: String): Int
 
     @Query("SELECT * FROM product group by type")
     suspend fun getOneType(): List<Product>

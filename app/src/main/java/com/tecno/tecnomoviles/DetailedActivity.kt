@@ -51,7 +51,7 @@ class DetailedActivity : AppCompatActivity() {
         binding.aniadirAlCarro.setOnClickListener(){
             producto.trolley = true
             updateProducts(producto)
-            startActivity(Intent(this, ConfirmacionCompra::class.java))
+            startActivity(Intent(this, CarritoActivity::class.java))
         }
         MyApplication.preferences.setActivityName("DetailedActivity")
     }

@@ -3,10 +3,8 @@ package com.tecno.tecnomoviles
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.MutableLiveData
@@ -15,13 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.HomeBinding
-import com.tecno.tecnomoviles.databinding.LoginBinding
-import com.tecno.tecnomoviles.databinding.ProfileBinding
 import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
-import persistence.entitys.user.User
 
 class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductListTypeOnClickListener,ProductListOnClickRecomendedListener {
 

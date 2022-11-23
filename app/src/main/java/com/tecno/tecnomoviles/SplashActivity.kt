@@ -25,7 +25,6 @@ class SplashActivity : AppCompatActivity() {
     lateinit var serviceResult: Call<List<ProductDTO>>
     lateinit var data: ProductDTO
     private lateinit var binding : SplashBinding
-    var existente:Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +44,6 @@ class SplashActivity : AppCompatActivity() {
         getProductListFromServerOption2()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
-
     private fun getProductListFromServerOption2() {
         serviceResult = productService.productRetrofitService.getProductList()
         serviceResult.enqueue(object : Callback<List<ProductDTO>> {
@@ -57,16 +51,10 @@ class SplashActivity : AppCompatActivity() {
                 call: Call<List<ProductDTO>>,
                 response: Response<List<ProductDTO>>
             ) {
-                response.body()?.let { datos ->
+                response.body()?.let {
 
-                    for (j in datos) {
-
+                    for (j in it) {
                         getProfileForDatabase(j)
-                        if(existente){
-                            updateProducts(j)
-                        }else{
-                            saveProducts(j)
-                        }
                     }
                 }
             }
@@ -80,9 +68,9 @@ class SplashActivity : AppCompatActivity() {
         runBlocking {
             launch {
                 if (MyApplication.myAppDatabase.productDao().isEmpty(product.name) > 0) {
-                    existente = true
+                    updateProducts(product,MyApplication.myAppDatabase.productDao().getProductIdByName(product.name))
                 }else{
-                    existente = false
+                    saveProducts(product)
                 }
             }
         }
@@ -106,10 +94,11 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateProducts(product: ProductDTO){
+    private fun updateProducts(product: ProductDTO, id:Int){
         runBlocking {
             MyApplication.myAppDatabase.productDao().updateProduct(
                 Product(
+                    id = id,
                     name = product.name,
                     type = product.type,
                     urlPhoto = product.urlPhoto,
@@ -123,5 +112,4 @@ class SplashActivity : AppCompatActivity() {
             )
         }
     }
-
 }

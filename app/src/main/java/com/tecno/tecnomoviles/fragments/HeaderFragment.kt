@@ -51,6 +51,10 @@ class HeaderFragment : Fragment(){
                 }
             }
 
+            if(layout == "CarritoActivity"){
+                binding!!.chop.visibility = View.INVISIBLE
+            }
+
         }
 
         return r
