@@ -23,9 +23,10 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 📝 Intents
 📝 Recycler View  
 📝 Fragment
-📝 Room
-📝 Shared-Preference
+📝 Database Room
+📝 Shared Preferents
 📝 Networking
+📝 Permisos  
 
 
 # Diseño de la aplicación
