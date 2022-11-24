@@ -19,7 +19,8 @@
         tools:ignore="MissingConstraints" >
     </androidx.fragment.app.FragmentContainerView>
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/userImage"
         android:layout_width="match_parent"
         android:layout_height="308dp"
@@ -35,6 +36,7 @@
         android:src="@drawable/pencil_512"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="300dp"
+        android:onClick="pickPhoto"
         app:layout_constraintStart_toStartOf="@id/fragment_header"
         app:layout_constraintBottom_toBottomOf="@+id/userImage"/>
 

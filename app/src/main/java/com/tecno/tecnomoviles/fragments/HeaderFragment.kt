@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.MyApplication
 import com.tecno.tecnomoviles.CarritoActivity
+import com.tecno.tecnomoviles.HistorialCompra
+import com.tecno.tecnomoviles.HomeActivity
 import com.tecno.tecnomoviles.NavigationDrawer
 import com.tecno.tecnomoviles.databinding.HeaderFragmentBinding
 
 class HeaderFragment : Fragment(){
 
-private  var binding: HeaderFragmentBinding? = null
+    private  var binding: HeaderFragmentBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +30,7 @@ private  var binding: HeaderFragmentBinding? = null
         binding!!.drawer.setOnClickListener(){
             startActivity(Intent(this.requireContext(), NavigationDrawer::class.java))
         }
+
         binding!!.chop.setOnClickListener(){
             startActivity(Intent(this.requireContext(), CarritoActivity::class.java))
         }
@@ -40,6 +44,18 @@ private  var binding: HeaderFragmentBinding? = null
                 binding!!.searchInput.visibility = View.INVISIBLE
             }
 
+            if(layout == "DetailedActivity"){
+                binding!!.drawer.visibility = View.INVISIBLE
+                binding!!.botonReturn.visibility = View.VISIBLE
+
+                binding!!.botonReturn.setOnClickListener(){
+                    startActivity(Intent(this.requireContext(), HomeActivity::class.java))
+                }
+            }
+
+            if(layout == "CarritoActivity"){
+                binding!!.chop.visibility = View.INVISIBLE
+            }
         }
 
         return r

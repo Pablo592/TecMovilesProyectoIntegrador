@@ -25,8 +25,11 @@ interface ProductDAO {
     @Query("SELECT * FROM product where id = :id")
     suspend fun getProductById(id: Int): Product
 
-    @Query("SELECT * FROM product where id = :name")
+    @Query("SELECT * FROM product where name = :name")
     suspend fun getProductByName(name: String): Product
+
+    @Query("SELECT id FROM product where name = :name")
+    suspend fun getProductIdByName(name: String): Int
 
     @Query("SELECT * FROM product group by type")
     suspend fun getOneType(): List<Product>
@@ -39,6 +42,9 @@ interface ProductDAO {
 
     @Query("SELECT * FROM product where recommended = :recommended")
     suspend fun getRecommended(recommended: Boolean): List<Product>
+
+    @Query("SELECT Count(*) FROM product where recommended = :recommended")
+    suspend fun getRecommendedIsEmpty(recommended: Boolean): Int
 
     @Query("SELECT * FROM product where bought = :bought order By price asc")
     suspend fun getBought(bought: Boolean): List<Product>

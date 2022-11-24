@@ -30,7 +30,6 @@ class ConfirmacionCompra  : AppCompatActivity() {
             startActivity(mailer)
 
 
-
             startActivity( Intent(this, HomeActivity::class.java))
         }
 

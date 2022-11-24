@@ -1,22 +1,26 @@
 package com.tecno.tecnomoviles
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.widget.Toast
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
+import androidx.core.app.NotificationCompat
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.SplashBinding
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import androidx.lifecycle.Observer
 import persistence.entitys.product.Product
-import services.ProductRetrofit
-import services.dataClasses.ProductDTO
-import java.util.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import services.ProductRetrofit
+import services.dataClasses.ProductDTO
+import java.util.*
 import kotlin.concurrent.timerTask
 
 class SplashActivity : AppCompatActivity() {
@@ -25,9 +29,12 @@ class SplashActivity : AppCompatActivity() {
     lateinit var serviceResult: Call<List<ProductDTO>>
     lateinit var data: ProductDTO
     private lateinit var binding : SplashBinding
-    var existente:Boolean = false
+
+    private val NOTIFICATION_CHANNEL_ID = "my_channel"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
         supportActionBar?.hide()
@@ -43,28 +50,40 @@ class SplashActivity : AppCompatActivity() {
 
         productService = ProductRetrofit()
         getProductListFromServerOption2()
+        sendWelcomeNotification()
     }
 
-    override fun onResume() {
-        super.onResume()
 
-    /*    for (j in listaProductos) {
-            getProfileForDatabase(j)
+    private fun sendWelcomeNotification() {
 
-            if(existente){
-                productLiveData.observe(this, Observer{
-                    if((j.type != it.type) || (j.urlPhoto != it.urlPhoto)||
-                        (j.price != it.price)|| (j.description != it.description)||
-                        (j.features != it.features)|| (j.trolley != it.trolley)||
-                        (j.recommended != it.recommended)|| (j.bought != it.bought)){
+        //Setear una acción a la notificación:
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+        val builder: NotificationCompat.Builder =
+            NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.drawable.tech_logo)
+                .setContentTitle(getString(R.string.notificacion))
+                .setContentText(getString(R.string.mensaje_bienvenida))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-                        updateProducts(j)
-                    }
-                })
-            }else{
-                saveProducts(j)
-            }
-        }*/
+        //Crear el Notification Channel para versiones de android posteriores a API 26.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name: CharSequence = getString(R.string.notificacion)
+            val description = getString(R.string.mensaje_bienvenida)
+            val notificationChannel = NotificationChannel(
+                NOTIFICATION_CHANNEL_ID,
+                name,
+                NotificationManager.IMPORTANCE_LOW
+            )
+            notificationChannel.description = description
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+        notificationManager.notify(1, builder.build())
     }
 
     private fun getProductListFromServerOption2() {
@@ -74,35 +93,27 @@ class SplashActivity : AppCompatActivity() {
                 call: Call<List<ProductDTO>>,
                 response: Response<List<ProductDTO>>
             ) {
-                binding.userText.text = response.body().toString()
-                response.body()?.let { datos ->
+                response.body()?.let {
 
-                    for (j in datos) {
-
-                        getProfileForDatabase(j)
-                        if(existente){
-                            updateProducts(j)
-                        }else{
-                            saveProducts(j)
-                        }
+                    for (j in it) {
+                        getProductForDatabase(j)
                     }
                 }
             }
             override fun onFailure(call: Call<List<ProductDTO>>, t: Throwable) {
-                binding.userText.text = t.message
 
             }
         })
     }
 
-    private fun getProfileForDatabase(product: ProductDTO) {
+    private fun getProductForDatabase(product: ProductDTO) {
         runBlocking {
             launch {
-                    if (MyApplication.myAppDatabase.productDao().isEmpty(product.name) > 0) {
-                        existente = true
-                    }else{
-                        existente = false
-                    }
+                if (MyApplication.myAppDatabase.productDao().isEmpty(product.name) > 0) {
+                    updateProducts(product,MyApplication.myAppDatabase.productDao().getProductIdByName(product.name))
+                }else{
+                    saveProducts(product)
+                }
             }
         }
     }
@@ -125,10 +136,11 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateProducts(product: ProductDTO){
+    private fun updateProducts(product: ProductDTO, id:Int){
         runBlocking {
             MyApplication.myAppDatabase.productDao().updateProduct(
                 Product(
+                    id = id,
                     name = product.name,
                     type = product.type,
                     urlPhoto = product.urlPhoto,
@@ -142,5 +154,10 @@ class SplashActivity : AppCompatActivity() {
             )
         }
     }
-
 }
+
+
+
+
+
+

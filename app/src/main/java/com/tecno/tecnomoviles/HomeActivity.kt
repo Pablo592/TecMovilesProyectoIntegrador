@@ -3,10 +3,8 @@ package com.tecno.tecnomoviles
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.MutableLiveData
@@ -15,21 +13,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.HomeBinding
-import com.tecno.tecnomoviles.databinding.LoginBinding
-import com.tecno.tecnomoviles.databinding.ProfileBinding
 import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import persistence.entitys.product.Product
-import persistence.entitys.user.User
 
 class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductListTypeOnClickListener,ProductListOnClickRecomendedListener {
 
     val productLiveData = MutableLiveData<List<Product>>()
     val productLiveTypeData = MutableLiveData<List<Product>>()
+    val productLiveRecomendedData = MutableLiveData<List<Product>>()
     lateinit var listaProductos: List<Product>
     private lateinit var binding : HomeBinding
     lateinit var listaTypeProductos: List<Product>
+    lateinit var listaRecomendedProductos: List<Product>
 
 
 
@@ -58,21 +55,10 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
                 setReorderingAllowed(true)
                 add<HeaderFragment>(R.id.fragment_header)
             }
-
-            getListProducts()
-
-            val recyclerViewSecond = findViewById<RecyclerView>(R.id.recyclerViewSecond)
-            val adapterSecond = CustomAdapterSecond()
-
-            recyclerViewSecond.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            recyclerViewSecond.adapter = adapterSecond
-            adapterSecond.onItemClick = {
-                val intent = Intent(this, DetailedActivity::class.java)
-                intent.putExtra("producto",it)
-                startActivity(intent)
-            }
-
         }
+
+        getListProducts()
+        getListRecomendedProducts()
         MyApplication.preferences.setActivityName("HomeActivity")
     }
 
@@ -83,16 +69,16 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         recyclerView.adapter = ProductListAdapter(data = listaProductos, listener = this)
 
 
-
+/*
         val recyclerViewRecomended = findViewById<RecyclerView>(R.id.recyclerViewSecond)
         recyclerViewRecomended.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
-        recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaProductos, listener = this)
+        recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaRecomendedProductos, listener = this)*/
     }
 
     private fun getProductsForDatabase() {
         runBlocking {
             launch {
-                    productLiveData.value = MyApplication.myAppDatabase.productDao().getOneType()
+                productLiveData.value = MyApplication.myAppDatabase.productDao().getOneType()
             }
         }
     }
@@ -103,6 +89,28 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
                 productLiveTypeData.value = MyApplication.myAppDatabase.productDao().getType(type)
             }
         }
+    }
+
+    private fun getProductsForDatabaseRecomended() {
+        runBlocking {
+            launch {
+                if(MyApplication.myAppDatabase.productDao().getRecommendedIsEmpty(true) > 0){
+                    productLiveRecomendedData.value = MyApplication.myAppDatabase.productDao().getRecommended(true)
+                }else{
+                    productLiveRecomendedData.value = MyApplication.myAppDatabase.productDao().getOneType()
+                }
+            }
+        }
+    }
+
+    public fun getListRecomendedProducts(){
+        getProductsForDatabaseRecomended()
+        productLiveRecomendedData.observe(this, Observer{
+            listaRecomendedProductos =  it
+            val recyclerViewRecomended = findViewById<RecyclerView>(R.id.recyclerViewSecond)
+            recyclerViewRecomended.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
+            recyclerViewRecomended.adapter = ProductListRecomendedAdapter(data = listaRecomendedProductos, listener = this)
+        })
     }
 
     public fun getListTypeProducts(type:String){
@@ -117,6 +125,7 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         productLiveData.observe(this, Observer{
             listaProductos =  it
         })
+
     }
 
     override fun onItemClick(position: Int) {
@@ -130,14 +139,12 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
     }
 
     override fun onItemTypeClick(position: Int) {
-        Toast.makeText(baseContext, "Su Producto seleccionado es: ${listaTypeProductos[position].name}", Toast.LENGTH_SHORT).show()
         val myIntent = Intent(this, DetailedActivity::class.java)
         myIntent.putExtra("product",listaTypeProductos[position].id)
         startActivity(myIntent)
     }
 
     override fun onItemRecomendedClick(position: Int) {
-        Toast.makeText(baseContext, "Su Producto seleccionado es: ${listaProductos[position].name}", Toast.LENGTH_SHORT).show()
         val myIntent = Intent(this, DetailedActivity::class.java)
         myIntent.putExtra("product",listaProductos[position].id)
         startActivity(myIntent)
