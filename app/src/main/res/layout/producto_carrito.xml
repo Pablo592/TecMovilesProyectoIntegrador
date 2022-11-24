@@ -61,14 +61,14 @@
 
         <ImageView
             android:id="@+id/eraseButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/botonborrar"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="45dp"
-            android:layout_marginLeft="320dp">
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="300dp">
         </ImageView>
 
     </RelativeLayout>

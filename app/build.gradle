@@ -37,8 +37,12 @@ android {
         enabled = true
     }
 }
-
-
+android {
+    lintOptions {
+        // TODO: remove below once we have time to update entire logic.
+        disable 'some_warning_id'
+    }
+}
 
 dependencies {
 
@@ -61,6 +65,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     kapt "androidx.room:room-compiler:2.4.3"
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
+
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 }

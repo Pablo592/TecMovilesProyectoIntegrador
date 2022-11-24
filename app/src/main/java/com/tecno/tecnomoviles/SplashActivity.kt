@@ -1,15 +1,19 @@
 package com.tecno.tecnomoviles
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.SplashBinding
 import kotlinx.coroutines.launch
@@ -48,9 +52,23 @@ class SplashActivity : AppCompatActivity() {
             startActivity(mainIntent)
         }, 1500)
 
-        productService = ProductRetrofit()
-        getProductListFromServerOption2()
-        sendWelcomeNotification()
+   /*   if (ContextCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) !=
+            PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WAKE_LOCK),
+                PackageManager.GET_PERMISSIONS)
+        }*/
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) !=
+            PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.INTERNET),
+                PackageManager.GET_PERMISSIONS)
+        }
+            productService = ProductRetrofit()
+            getProductListFromServerOption2()
+        //    sendWelcomeNotification()
+
     }
 
 
