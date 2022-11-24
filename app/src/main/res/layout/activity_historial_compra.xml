@@ -27,4 +27,19 @@
         tools:ignore="MissingConstraints" />
 
 
+    <TextView
+        android:id="@+id/productosInexistentes"
+        android:layout_width="368dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        android:text="@string/aun_no_ha_realizado_ninguna_compra"
+        app:layout_constraintStart_toStartOf="@+id/fragment_header"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_header"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

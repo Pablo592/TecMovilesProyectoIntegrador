@@ -52,6 +52,12 @@ class NavigationDrawer : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         userLiveData.observe(this, Observer{
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+                // Permission is not granted
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    PackageManager.GET_PERMISSIONS)
+            }
             if(it.profilePhotoUrl != "NADA")
                 binding.imageProfile.setImageURI(Uri.parse(it.profilePhotoUrl))
         })

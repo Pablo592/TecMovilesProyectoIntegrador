@@ -3,6 +3,7 @@ package com.tecno.tecnomoviles
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.SplashBinding
@@ -25,6 +26,7 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var binding : SplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
         supportActionBar?.hide()

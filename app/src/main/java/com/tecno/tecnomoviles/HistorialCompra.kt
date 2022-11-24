@@ -12,8 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.MyApplication
+import com.tecno.tecnomoviles.databinding.ActivityHistorialCompraBinding
 import com.tecno.tecnomoviles.databinding.EditDataUserBinding
 import com.tecno.tecnomoviles.databinding.HistorialCompraBinding
+import com.tecno.tecnomoviles.databinding.LoginBinding
 import com.tecno.tecnomoviles.fragments.HeaderFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -23,12 +25,17 @@ class HistorialCompra : AppCompatActivity(),ProductListOnClickHistorialCompraLis
 
     val productLiveData = MutableLiveData<List<Product>>()
     lateinit var listaProductos: List<Product>
+    private lateinit var binding : ActivityHistorialCompraBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historial_compra)
         supportActionBar?.hide()
+
+        binding = ActivityHistorialCompraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
@@ -59,6 +66,8 @@ class HistorialCompra : AppCompatActivity(),ProductListOnClickHistorialCompraLis
                 val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewHistory)
                 recyclerView.layoutManager = LinearLayoutManager(this)
                 recyclerView.adapter = ProductListHistorialCompraAdapter(data = listaProductos, listener = this)
+            }else{
+                binding.productosInexistentes.visibility = View.VISIBLE
             }
 
         })

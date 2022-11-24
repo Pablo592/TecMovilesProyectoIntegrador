@@ -34,4 +34,5 @@
     <string name="votar_aplicaci_n">Votar aplicación</string>
     <string name="Nombre">Nombre</string>
     <string name="no_hay_prodcutos_agregados_al_carrito">No hay productos agregados al carrito</string>
+    <string name="aun_no_ha_realizado_ninguna_compra">Aun no ha realizado ninguna compra</string>
 </resources>
