@@ -13,5 +13,5 @@ data class User(
     val username: String,
     val name: String,
     val password: String,
-    val profilePhotoUrl: String
+    var profilePhotoUrl: String
     )

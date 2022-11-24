@@ -84,7 +84,6 @@ class HistorialCompra : AppCompatActivity(),ProductListOnClickHistorialCompraLis
     }
 
     override fun onItemHistorialCompraClick(position: Int) {
-        Toast.makeText(baseContext, "Su Producto seleccionado es: ${listaProductos[position].name}", Toast.LENGTH_SHORT).show()
         val myIntent = Intent(this, DetailedActivity::class.java)
         myIntent.putExtra("product",listaProductos[position].id)
         startActivity(myIntent)

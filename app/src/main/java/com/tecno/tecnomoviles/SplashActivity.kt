@@ -1,15 +1,13 @@
 package com.tecno.tecnomoviles
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.SplashBinding
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import androidx.lifecycle.Observer
 import persistence.entitys.product.Product
 import services.ProductRetrofit
 import services.dataClasses.ProductDTO

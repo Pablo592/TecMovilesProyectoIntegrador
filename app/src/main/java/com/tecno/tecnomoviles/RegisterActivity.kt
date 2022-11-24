@@ -94,7 +94,7 @@ class RegisterActivity: AppCompatActivity() {
                 password = binding.inputPassword.text.toString(),
                 name = binding.nameInput.text.toString(),
                 email = binding.inputEmail.text.toString(),
-                profilePhotoUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDGQO5-8CPA9Hzl5_wLkAf6VtlMw52q7IwRw&usqp=CAU"
+                profilePhotoUrl = "NADA"
             )
         )
         }
