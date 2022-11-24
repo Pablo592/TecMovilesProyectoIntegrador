@@ -1,12 +1,6 @@
 package persistence.entitys.user
 
-import android.text.Editable
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface UserDAO {
@@ -16,6 +10,9 @@ interface UserDAO {
 
     @Update
     suspend fun updateUser (user: User)
+
+    @Delete
+    fun deleteUser(user: User)
 
     @Query("SELECT Count(*) FROM user WHERE username = :username")
     suspend fun isEmpty(username: String): Int
