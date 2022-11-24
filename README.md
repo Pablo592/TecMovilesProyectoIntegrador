@@ -28,6 +28,7 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 📝 Networking
 📝 Permisos  
 
+
 # Diseño de la aplicación
 [Figma](https://www.figma.com/file/KyBU5VFZdcYjcfLlk11tFG/Proyecto-Integrador%3A-Tecnologias-M%C3%B3viles?node-id=0%3A1)
 
