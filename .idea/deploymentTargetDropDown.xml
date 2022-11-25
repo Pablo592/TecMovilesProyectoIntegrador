@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="deploymentTargetDropDown">
-    <runningDeviceTargetSelectedWithDropDown>
+    <targetSelectedWithDropDown>
       <Target>
-        <type value="RUNNING_DEVICE_TARGET" />
+        <type value="QUICK_BOOT_TARGET" />
         <deviceKey>
           <Key>
             <type value="SERIAL_NUMBER" />
@@ -11,7 +11,12 @@
           </Key>
         </deviceKey>
       </Target>
+<<<<<<< HEAD
     </runningDeviceTargetSelectedWithDropDown>
     <timeTargetWasSelectedWithDropDown value="2022-11-25T11:23:49.732731Z" />
+=======
+    </targetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2022-11-24T23:38:06.029437Z" />
+>>>>>>> cbded39c90dba481c86b3da56de9f54ba0cbc3f8
   </component>
 </project>

@@ -20,15 +20,20 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 # Temas desarrollados
 📝 Activities  
 📝 View Binding  
-📝 Intents
+📝 Intents  
 📝 Recycler View  
 📝 Fragment  
+📝 Database Room  
+📝 Shared Preferences  
+📝 Networking  
+📝 Permissions  
+
 
 # Diseño de la aplicación
 [Figma](https://www.figma.com/file/KyBU5VFZdcYjcfLlk11tFG/Proyecto-Integrador%3A-Tecnologias-M%C3%B3viles?node-id=0%3A1)
 
-# Demo de la aplicación
-![](https://github.com/Pablo592/TecMovilesProyectoIntegrador/blob/dev/App-TechKings.gif)
+# Demo de la aplicación (Tiene un delay de 10 segundos)
+![](https://github.com/Pablo592/TecMovilesProyectoIntegrador/blob/dev/MejoradaDefinitivo.gif)
 
 # Desarrolladores
 👨‍💻 [Pablo Gaido](https://github.com/Pablo592)  
