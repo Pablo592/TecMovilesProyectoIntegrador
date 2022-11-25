@@ -47,6 +47,12 @@ class NavigationDrawer : AppCompatActivity() {
         binding.shoppingHistory.setOnClickListener() {
             startActivity(Intent(this, HistorialCompra::class.java))
         }
+
+        binding.signOff.setOnClickListener(){
+            MyApplication.preferences.setUserName("")
+            MyApplication.preferences.setUserPassword("")
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
     override fun onResume() {

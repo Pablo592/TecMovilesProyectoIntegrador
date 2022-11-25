@@ -67,17 +67,12 @@ class LoginActivity: AppCompatActivity() {
     private fun getProfileForDatabase() {
         runBlocking {
             launch {
-                if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
                     if (MyApplication.myAppDatabase.userDao().isEmpty(binding.userInput.text.toString()) == 0
                     ) {
                         Toast.makeText(baseContext, "Ingrese datos correctos o Registrese", Toast.LENGTH_LONG).show()
                     } else {
-                        if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
-                            userLiveData.value = MyApplication.myAppDatabase.userDao()
-                                .getUser(binding.userInput.text.toString())
-                        }
+                            userLiveData.value = MyApplication.myAppDatabase.userDao().getUser(binding.userInput.text.toString())
                     }
-                }
             }
         }
     }

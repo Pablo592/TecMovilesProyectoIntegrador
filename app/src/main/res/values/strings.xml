@@ -28,7 +28,6 @@
     <string name="descripci_n">Descripción</string>
     <string name="comprar">Comprar</string>
     <string name="a_adir_al_carro">Añadir al carro</string>
-    <string name="configuraci_n">Configuración</string>
     <string name="perfil">Perfil</string>
     <string name="historial_de_compras">Historial de compras</string>
     <string name="votar_aplicaci_n">Votar aplicación</string>
@@ -37,4 +36,5 @@
     <string name="aun_no_ha_realizado_ninguna_compra">Aun no ha realizado ninguna compra</string>
     <string name="mensaje_bienvenida">Bienvenido a TechKings</string>
     <string name="notificacion">No se olvide de volver</string>
+    <string name="cerrar_sesion">Cerrar sesion</string>
 </resources>
