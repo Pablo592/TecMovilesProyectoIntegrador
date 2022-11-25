@@ -68,7 +68,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="45dp"
-            android:layout_marginLeft="320dp">
+            android:layout_marginLeft="300dp">
         </ImageView>
 
     </RelativeLayout>

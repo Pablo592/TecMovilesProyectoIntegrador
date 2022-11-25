@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.MyApplication
 import com.tecno.tecnomoviles.databinding.SplashBinding
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import services.ProductRetrofit
 import services.dataClasses.ProductDTO
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -50,40 +52,52 @@ class SplashActivity : AppCompatActivity() {
 
         productService = ProductRetrofit()
         getProductListFromServerOption2()
+    }
+
+    override fun onStop() {
+        super.onStop()
         sendWelcomeNotification()
     }
 
-
     private fun sendWelcomeNotification() {
 
-        //Setear una acción a la notificación:
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-        val builder: NotificationCompat.Builder =
-            NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.drawable.tech_logo)
-                .setContentTitle(getString(R.string.notificacion))
-                .setContentText(getString(R.string.mensaje_bienvenida))
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        val notificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        createNotificationChannel()
+        val date = Date()
+        val notificationId = SimpleDateFormat("ddHHmmss",Locale.getDefault()).format(date).toInt()
 
-        //Crear el Notification Channel para versiones de android posteriores a API 26.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = getString(R.string.notificacion)
-            val description = getString(R.string.mensaje_bienvenida)
-            val notificationChannel = NotificationChannel(
-                NOTIFICATION_CHANNEL_ID,
-                name,
-                NotificationManager.IMPORTANCE_LOW
-            )
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_IMMUTABLE)
+
+
+
+        val notificationBuilder = NotificationCompat.Builder(this,NOTIFICATION_CHANNEL_ID)
+        notificationBuilder.setSmallIcon(R.drawable.tech_logo)
+        notificationBuilder.setContentTitle(getString(R.string.mensaje_bienvenida))
+        notificationBuilder.setContentText(getString(R.string.notificacion))
+        notificationBuilder.priority = NotificationCompat.PRIORITY_MAX
+
+        notificationBuilder.setAutoCancel(true)
+        notificationBuilder.setContentIntent(pendingIntent)
+
+
+        val notificationManagerCompact = NotificationManagerCompat.from(this)
+        notificationManagerCompact.notify(notificationId,notificationBuilder.build())
+
+    }
+
+    private fun createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name: CharSequence = "MyNotification"
+            val description = "My notification channel description"
+
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID,name,importance)
             notificationChannel.description = description
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(notificationChannel)
         }
-        notificationManager.notify(1, builder.build())
     }
 
     private fun getProductListFromServerOption2() {
