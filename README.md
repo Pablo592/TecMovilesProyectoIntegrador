@@ -22,10 +22,10 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 📝 View Binding  
 📝 Intents
 📝 Recycler View  
-📝 Fragment
-📝 Database Room
-📝 Shared Preferents
-📝 Networking
+📝 Fragment  
+📝 Database Room  
+📝 Shared Preferents  
+📝 Networking  
 📝 Permisos  
 
 
