@@ -20,7 +20,7 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 # Temas desarrollados
 📝 Activities  
 📝 View Binding  
-📝 Intents
+📝 Intents  
 📝 Recycler View  
 📝 Fragment  
 📝 Database Room  
