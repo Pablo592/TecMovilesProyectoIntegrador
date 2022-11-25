@@ -169,9 +169,3 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 }
-
-
-
-
-
-
