@@ -82,7 +82,6 @@ class ProfileActivity : AppCompatActivity() {
             binding.userImage.setImageURI(data?.data)
             user.profilePhotoUrl = data?.data.toString()
             updateUser(user)
-            MyApplication.preferences.setUserPhoto(data?.data.toString())
         }
     }
 

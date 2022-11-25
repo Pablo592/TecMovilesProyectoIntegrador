@@ -12,7 +12,7 @@ class MySharedPreferences (context: Context) {
     private val KEY_USER_NAME = "USER_NAME"
     private val KEY_REFRESH_ACTIVITY = "REFRESH_ACTIVITY"
     private val KEY_ACTIVITY_NAME = "KEY_ACTIVITY_NAME"
-    private val KEY_USER_PHOTO = "KEY_USER_PHOTO"
+    private val KEY_USER_PASSWORD = "KEY_USER_PHOTO"
 
     fun setUserName(userName: String) {
         preferences.edit().putString(KEY_USER_NAME, userName).apply()
@@ -26,8 +26,8 @@ class MySharedPreferences (context: Context) {
         preferences.edit().putString(KEY_ACTIVITY_NAME, activityName).apply()
     }
 
-    fun setUserPhoto(userPhoto: String) {
-        preferences.edit().putString(KEY_USER_PHOTO, userPhoto).apply()
+    fun setUserPassword(userName: String) {
+        preferences.edit().putString(KEY_USER_PASSWORD, userName).apply()
     }
 
     fun getActivityName(): String {
@@ -44,8 +44,8 @@ class MySharedPreferences (context: Context) {
     }
 
 
-    fun getUserPhoto(): String {
-        return preferences.getString(KEY_USER_PHOTO, "") ?: ""
+    fun getUserPassword(): String {
+        return preferences.getString(KEY_USER_PASSWORD, "") ?: ""
     }
 
 }
