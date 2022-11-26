@@ -4,6 +4,8 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
@@ -51,6 +53,12 @@ class SplashActivity : AppCompatActivity() {
 
         productService = ProductRetrofit()
         getProductListFromServerOption2()
+
+        var mp = MediaPlayer()
+        mp.setDataSource(this , Uri.parse("android.resource://" + this.packageName+"/"+R.raw.notification))
+        mp.prepare()
+        mp.start()
+
     }
 
     override fun onStop() {
