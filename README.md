@@ -27,13 +27,14 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 📝 Shared Preferences  
 📝 Networking  
 📝 Permissions  
+📝 Media Player  
 
 
 # Diseño de la aplicación
 [Figma](https://www.figma.com/file/KyBU5VFZdcYjcfLlk11tFG/Proyecto-Integrador%3A-Tecnologias-M%C3%B3viles?node-id=0%3A1)
 
-# Demo de la aplicación (Tiene un delay de 10 segundos)
-![](https://github.com/Pablo592/TecMovilesProyectoIntegrador/blob/dev/MejoradaDefinitivo.gif)
+# Demo de la aplicación
+![](https://github.com/Pablo592/TecMovilesProyectoIntegrador/blob/dev/Demo.gif)
 
 # Desarrolladores
 👨‍💻 [Pablo Gaido](https://github.com/Pablo592)  

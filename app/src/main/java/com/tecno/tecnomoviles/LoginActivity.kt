@@ -63,20 +63,16 @@ class LoginActivity: AppCompatActivity() {
     }
 
 
+
     private fun getProfileForDatabase() {
         runBlocking {
             launch {
-                if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
                     if (MyApplication.myAppDatabase.userDao().isEmpty(binding.userInput.text.toString()) == 0
                     ) {
                         Toast.makeText(baseContext, "Ingrese datos correctos o Registrese", Toast.LENGTH_LONG).show()
                     } else {
-                        if (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
-                            userLiveData.value = MyApplication.myAppDatabase.userDao()
-                                .getUser(binding.userInput.text.toString())
-                        }
+                            userLiveData.value = MyApplication.myAppDatabase.userDao().getUser(binding.userInput.text.toString())
                     }
-                }
             }
         }
     }
@@ -88,11 +84,28 @@ class LoginActivity: AppCompatActivity() {
             binding.userInput.setText(MyApplication.preferences.getUserName())
             binding.inputPassword.setText("")
         }
+
+        if ((MyApplication.preferences.getUserPassword().isNotEmpty() || MyApplication.preferences.getUserPassword().isNotBlank())
+            && (MyApplication.preferences.getUserName().isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank())) {
+            binding.userInput.setText(MyApplication.preferences.getUserName())
+            binding.inputPassword.setText(MyApplication.preferences.getUserPassword())
+            getProfileForDatabase()
+
+            userLiveData.observe(this, Observer{
+
+                if(it.username != null){
+                    if(binding.inputPassword.text.toString() == it.password) {
+                        startActivity(Intent(this, HomeActivity::class.java))
+                    }
+                }
+            })
+        }
     }
 
     override fun onPause() {
         super.onPause()
         MyApplication.preferences.setUserName(binding.userInput.text.toString())
+        MyApplication.preferences.setUserPassword(binding.inputPassword.text.toString())
         binding.userInput.setText("")
     }
 }

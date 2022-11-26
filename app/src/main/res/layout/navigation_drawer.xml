@@ -38,37 +38,13 @@
 
 
         <TextView
-            android:id="@+id/line0"
+            android:id="@+id/line1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="@+id/imageHome"
             app:layout_constraintTop_toBottomOf="@id/imageHome"
-            android:background="@color/grey">
-        </TextView>
-
-        <TextView
-            android:id="@+id/configuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="@+id/line0"
-            app:layout_constraintTop_toBottomOf="@id/line0"
-            android:text="@string/configuraci_n"
-            android:textColor="@color/white">
-        </TextView>
-
-        <TextView
-            android:id="@+id/line1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="@+id/configuration"
-            app:layout_constraintTop_toBottomOf="@id/configuration"
             android:background="@color/grey">
         </TextView>
 
@@ -141,6 +117,31 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="@+id/voteApplicationn"
             app:layout_constraintTop_toBottomOf="@id/voteApplicationn"
+            android:background="@color/grey">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/signOff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/line4"
+            app:layout_constraintTop_toBottomOf="@id/line4"
+            android:text="@string/cerrar_sesion"
+            android:textColor="@color/white">
+        </TextView>
+
+        <TextView
+            android:id="@+id/line0"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/cerrarSesion"
+            app:layout_constraintTop_toBottomOf="@id/cerrarSesion"
             android:background="@color/grey">
         </TextView>
     </LinearLayout>

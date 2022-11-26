@@ -62,6 +62,7 @@ class HomeActivity: AppCompatActivity() , ProductListOnClickListener, ProductLis
         MyApplication.preferences.setActivityName("HomeActivity")
     }
 
+
     override fun onResume() {
         super.onResume()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)

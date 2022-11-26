@@ -65,8 +65,6 @@ class RegisterActivity: AppCompatActivity() {
     private fun getProfileForDatabase() {
         runBlocking {
             launch {
-                if (MyApplication.preferences.getUserName()
-                        .isNotEmpty() || MyApplication.preferences.getUserName().isNotBlank()) {
                     if (MyApplication.myAppDatabase.userDao()
                             .isEmpty(binding.userInput.text.toString()) > 0
                     ) {
@@ -79,7 +77,7 @@ class RegisterActivity: AppCompatActivity() {
                     }else{
                         existente = true
                     }
-                }
+
             }
         }
     }
