@@ -27,6 +27,7 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 📝 Shared Preferences  
 📝 Networking  
 📝 Permissions  
+📝 Media Player  
 
 
 # Diseño de la aplicación
