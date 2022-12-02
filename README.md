@@ -39,3 +39,6 @@ El proyecto consta de una aplicación de una E-commerce de tecnologia para la em
 # Desarrolladores
 👨‍💻 [Pablo Gaido](https://github.com/Pablo592)  
 👨‍💻 [Kevin Yanes](https://github.com/kyanesdev)
+
+# Descarga de la aplicación
+[Aplicación](https://github.com/Pablo592/TecMovilesProyectoIntegrador/releases/tag/TechKings-V1-Release)
